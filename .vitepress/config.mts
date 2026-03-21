@@ -263,7 +263,7 @@ export default defineConfig({
   },
 
   themeConfig: {
-    logo: '/kstudioava.png',
+    logo: '/kstudioavanew.png',
     siteTitle: 'KStudio',
 
     socialLinks: [
