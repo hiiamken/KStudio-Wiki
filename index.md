@@ -30,44 +30,49 @@ onMounted(() => {
 
 <div class="ks-page">
 
-  <section class="ks-hero">
-    <div class="ks-bg-anim"></div>
-    <div class="ks-bg-overlay"></div>
-    <div class="ks-hero-content">
+  <video class="ks-bg-video" autoplay muted loop playsinline>
+    <source :src="withBase('/assets/backgroundhompage.mp4')" type="video/mp4" />
+  </video>
+  <div class="ks-bg-overlay"></div>
+
+  <div class="ks-inner">
+
+    <section class="ks-hero-content">
       <img :src="withBase('/assets/kstudioavanew.png')" alt="KStudio" class="ks-logo" />
       <h1 class="ks-title">
         <span>{{ typed }}</span><span class="ks-cursor" :style="{ opacity: cursor ? 1 : 0 }">|</span>
       </h1>
       <p class="ks-sub">Plugin Documentation</p>
       <p class="ks-tagline">We make Minecraft plugins that server owners actually want to use.</p>
-    </div>
-  </section>
+    </section>
 
-  <section class="ks-plugins">
-    <a :href="withBase('/ultracoinflip/guide/getting-started')" class="ks-card">
-      <img :src="withBase('/assets/ultracoinflipava.png')" alt="UltraCoinFlip" class="ks-card-img" />
-      <h3>UltraCoinFlip</h3>
-      <p>Coinflip plugin with multi-currency support, anti-exploit protection, Discord logging, and Folia compatibility. Runs on Spigot, Paper and Folia from 1.8 to 1.21.</p>
-      <span class="ks-card-link">View Docs →</span>
-    </a>
-    <a :href="withBase('/ultradungeon/guide/getting-started')" class="ks-card">
-      <img :src="withBase('/assets/ultradungeonava.png')" alt="UltraDungeon" class="ks-card-img" />
-      <h3>UltraDungeon</h3>
-      <p>Wave-based dungeon instances with custom bosses, loot, scoring, seasonal leaderboards, and party play. Built and configured entirely in-game.</p>
-      <span class="ks-card-link">View Docs →</span>
-    </a>
-    <a href="http://discord.gg/GGDxDnpnDP" target="_blank" class="ks-card ks-card-custom">
-      <div class="ks-card-icon">✦</div>
-      <h3>Custom Plugin</h3>
-      <p>Need something tailor-made for your server? We take custom plugin commissions. Reach out on Discord for pricing and details.</p>
-      <span class="ks-card-link">Contact on Discord →</span>
-    </a>
-  </section>
+    <section class="ks-plugins">
+      <a :href="withBase('/ultracoinflip/guide/getting-started')" class="ks-card">
+        <img :src="withBase('/assets/ultracoinflipava.png')" alt="UltraCoinFlip" class="ks-card-img" />
+        <h3>UltraCoinFlip</h3>
+        <p>Coinflip plugin with multi-currency support, anti-exploit protection, Discord logging, and Folia compatibility. Runs on Spigot, Paper and Folia from 1.8 to 1.21.</p>
+        <span class="ks-card-link">View Docs →</span>
+      </a>
+      <a :href="withBase('/ultradungeon/guide/getting-started')" class="ks-card">
+        <img :src="withBase('/assets/ultradungeonava.png')" alt="UltraDungeon" class="ks-card-img" />
+        <h3>UltraDungeon</h3>
+        <p>Wave-based dungeon instances with custom bosses, loot, scoring, seasonal leaderboards, and party play. Built and configured entirely in-game.</p>
+        <span class="ks-card-link">View Docs →</span>
+      </a>
+      <a href="http://discord.gg/GGDxDnpnDP" target="_blank" class="ks-card ks-card-custom">
+        <div class="ks-card-icon">✦</div>
+        <h3>Custom Plugin</h3>
+        <p>Need something tailor-made for your server? We take custom plugin commissions. Reach out on Discord for pricing and details.</p>
+        <span class="ks-card-link">Contact on Discord →</span>
+      </a>
+    </section>
 
-  <section class="ks-support">
-    <p>Have a question or found a bug?</p>
-    <a href="http://discord.gg/GGDxDnpnDP" target="_blank" class="ks-discord-btn">Join the Discord</a>
-  </section>
+    <section class="ks-support">
+      <p>Have a question or found a bug?</p>
+      <a href="http://discord.gg/GGDxDnpnDP" target="_blank" class="ks-discord-btn">Join the Discord</a>
+    </section>
+
+  </div>
 
 </div>
 
@@ -75,57 +80,47 @@ onMounted(() => {
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 .ks-page {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 0 24px 96px;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
-.ks-hero {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 500px;
-  margin: 0 -24px;
-  overflow: hidden;
-}
-
-.ks-bg-anim {
+.ks-bg-video {
   position: absolute;
   inset: 0;
-  background: linear-gradient(-45deg, rgba(201,124,16,0.18), rgba(245,200,66,0.1), rgba(88,101,242,0.08), rgba(201,124,16,0.14));
-  background-size: 400% 400%;
-  animation: ks-grad 10s ease infinite;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(14px);
+  opacity: 0.22;
+  transform: scale(1.08);
   z-index: 0;
-}
-@keyframes ks-grad {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
 }
 
 .ks-bg-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    var(--vp-c-bg) 0%,
-    transparent 18%,
-    transparent 75%,
-    var(--vp-c-bg) 100%
-  );
+  background: var(--vp-c-bg);
+  opacity: 0.72;
   z-index: 1;
 }
 
-.ks-hero-content {
+.ks-inner {
   position: relative;
   z-index: 2;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 48px 24px 96px;
+}
+
+.ks-hero-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 56px 24px 64px;
+  padding: 56px 0 64px;
 }
 
 .ks-logo {
