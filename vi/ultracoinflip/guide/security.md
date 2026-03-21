@@ -4,17 +4,17 @@ UltraCoinFlip có hệ thống bảo mật nhiều lớp để bảo vệ kinh t
 
 ## Các lớp bảo vệ
 
-### Khai thác hoàn tiền khi đăng xuất (sửa trong 3.10.0)
-Người chơi không thể thoát sau khi thua và đăng nhập lại để nhận hoàn tiền gian lận. Trò chơi được xác nhận ngay khi có kết quả — trước khi bất kỳ handler ngắt kết nào có thể kích hoạt hoàn tiền.
+### Dupe tiền bằng cách disconnect (đã vá từ 3.10.0)
+Người chơi không thể thua xong log out rồi reconnect để lấy lại tiền. Kết quả ván được chốt ngay lập tức — không có khoảng trống nào để disconnect rồi vào lại lấy tiền.
 
-### Hệ thống backup hoàn tiền
-Tất cả cược được backup trước khi trò chơi bắt đầu. Nếu server crash hoặc người chơi ngắt kết nối giữa chừng, backup được dùng để hoàn tiền khi đăng nhập lại. Backup chỉ bị xóa sau khi trò chơi giải quyết thành công.
+### Backup tiền cược
+Trước khi ván bắt đầu, tiền cược được lưu backup. Nếu server crash hoặc người chơi mất kết nối giữa chừng, tiền sẽ tự hoàn lại khi đăng nhập. Backup chỉ xóa sau khi ván kết thúc đúng cách.
 
 ### Kiểm tra số dư
-Sau mỗi rút tiền và nạp tiền, plugin xác minh số dư thay đổi đúng lượng kỳ vọng. Nếu plugin kinh tế thất bại âm thầm, plugin sẽ phát hiện và rollback.
+Sau mỗi lần trừ hoặc cộng tiền, plugin kiểm tra lại xem số dư có đúng không. Nếu plugin economy lỗi mà không báo gì, plugin tự phát hiện và rollback.
 
-### Bảo vệ double-click / race condition
-Người chơi không thể tham gia cùng một trò chơi hai lần hoặc tham gia nhiều trò cùng lúc.
+### Chống double-click / race condition
+Người chơi không thể vào cùng một ván hai lần hoặc chạy nhiều ván cùng lúc.
 
 ## Log phát hiện khai thác
 
@@ -31,13 +31,13 @@ exploit-detection:
   admin-permission: "ultracoinflip.admin"
 ```
 
-## Hệ thống hoàn tiền backup
+## Hoàn tiền tự động khi mất kết nối
 
-Cấu hình độ trễ khôi phục trong `config.yml`:
+Cấu hình thời gian chờ trước khi restore trong `config.yml`:
 
 ```yaml
 refund:
-  restore-delay: 2   # giây sau khi đăng nhập trước khi xử lý hoàn tiền
+  restore-delay: 2   # giây sau khi vào game trước khi xử lý hoàn tiền
 ```
 
-Tăng giá trị này nếu plugin kinh tế của bạn cần vài giây để tải dữ liệu người chơi khi đăng nhập.
+Tăng lên nếu plugin economy của server cần thêm thời gian để load dữ liệu người chơi.

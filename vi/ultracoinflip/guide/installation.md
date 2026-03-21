@@ -10,7 +10,7 @@ UltraCoinFlip **bắt buộc cần Vault** và ít nhất một plugin kinh tế
 
 - **EssentialsX** (phổ biến nhất)
 - **CMI**
-- Bất kỳ plugin đăng ký với Vault
+- Bất kỳ plugin nào register với Vault đều được
 
 ## Bước 3 — Đặt jar vào plugins/
 
@@ -34,7 +34,7 @@ plugins/UltraCoinFlip/
 
 ## Bước 5 — Cấu hình
 
-Mở `config.yml` để thiết lập. Đảm bảo `default-currency` khớp với loại tiền bạn muốn người chơi dùng.
+Mở `config.yml` để chỉnh. Quan trọng nhất là `default-currency` — chọn đúng loại tiền bạn muốn người chơi dùng mặc định.
 
 ::: tip
 Dùng `/coinflip reload` để tải lại config mà không cần restart server.
@@ -42,7 +42,7 @@ Dùng `/coinflip reload` để tải lại config mà không cần restart serve
 
 ## Cập nhật từ phiên bản cũ
 
-Chỉ cần thay file jar cũ bằng jar mới và restart server. File cấu hình hiện tại sẽ được giữ nguyên.
+Thay file jar cũ bằng jar mới rồi restart server là xong. File config cũ không bị đụng đến.
 
 ::: warning
 Luôn backup thư mục `plugins/UltraCoinFlip/` trước khi cập nhật.

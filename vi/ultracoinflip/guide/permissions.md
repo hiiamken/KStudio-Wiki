@@ -17,9 +17,9 @@
 
 ## Ghi chú
 
-- **Mặc định `true`** — Tất cả người chơi đều có quyền này trừ khi bị từ chối.
-- **Mặc định `op`** — Chỉ operator mới có quyền này.
-- **Mặc định `false`** — Không ai có quyền này trừ khi được cấp rõ ràng.
+- **Mặc định `true`** — Ai vào server cũng có, trừ khi bị deny thủ công.
+- **Mặc định `op`** — Chỉ OP mới có.
+- **Mặc định `false`** — Mặc định không ai có, phải tự cấp.
 
 ::: tip Ví dụ LuckPerms
 ```

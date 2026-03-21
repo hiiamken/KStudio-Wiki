@@ -1,6 +1,6 @@
 # Hệ thống thuế
 
-UltraCoinFlip có **hệ thống thuế theo bậc** — khấu trừ phần trăm từ tiền thắng dựa trên mức cược.
+UltraCoinFlip có **hệ thống thuế theo bậc** — trừ % từ tiền thắng, tỷ lệ tùy theo số tiền cược.
 
 ## Cách hoạt động
 
@@ -31,8 +31,8 @@ tax:
 ```
 
 - `rate` là phần trăm (ví dụ: `5` = 5%)
-- `max: -1` nghĩa là không có giới hạn trên
+- `max: -1` = không giới hạn trên
 
 ## Bỏ qua thuế
 
-Người chơi có quyền `ultracoinflip.bypass.tax` sẽ nhận đủ tiền thắng, không bị trừ thuế.
+Người chơi có quyền `ultracoinflip.bypass.tax` thắng bao nhiêu lấy bấy nhiêu, không bị trừ thuế.

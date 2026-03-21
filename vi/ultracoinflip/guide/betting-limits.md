@@ -1,6 +1,6 @@
 # Giới hạn cược
 
-Giới hạn cược cho phép giới hạn tổng tiền người chơi có thể đặt **mỗi ngày hoặc mỗi tuần**, theo từng loại tiền.
+Có thể giới hạn tổng tiền mỗi người có thể cược **mỗi ngày hoặc mỗi tuần**, riêng cho từng loại tiền.
 
 ## Cấu hình
 
@@ -17,12 +17,12 @@ betting-limits:
       limit: 50000
 ```
 
-`limit` là tổng **tích lũy** tiền cược tối đa trong chu kỳ reset. Tính cả thắng lẫn thua.
+`limit` là số tiền cược cộng dồn tối đa trong một kỳ reset — tính cả ván thắng lẫn thua.
 
 ## Quyền bỏ qua
 
-Người chơi có quyền `ultracoinflip.bypass.bettinglimit` không bị giới hạn.
+Người chơi có quyền `ultracoinflip.bypass.bettinglimit` sẽ không bị ảnh hưởng bởi giới hạn này.
 
 ::: tip
-Đặt `limit: 0` để tắt giới hạn cho một loại tiền cụ thể mà không tắt toàn bộ hệ thống.
+Đặt `limit: 0` để bỏ giới hạn riêng cho một loại tiền mà không tắt cả hệ thống.
 :::
