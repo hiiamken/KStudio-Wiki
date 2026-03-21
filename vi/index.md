@@ -30,9 +30,11 @@ onMounted(() => {
 
 <div class="ks-page">
 
-  <video class="ks-bg-video" autoplay muted loop playsinline>
-    <source :src="withBase('/assets/backgroundhompage.mp4')" type="video/mp4" />
-  </video>
+  <div class="ks-bg-video-wrap">
+    <video class="ks-bg-video" autoplay muted loop playsinline>
+      <source :src="withBase('/assets/backgroundhompage.mp4')" type="video/mp4" />
+    </video>
+  </div>
   <div class="ks-bg-overlay"></div>
 
   <div class="ks-inner">
@@ -87,16 +89,20 @@ onMounted(() => {
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
-.ks-bg-video {
+.ks-bg-video-wrap {
   position: absolute;
   inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.ks-bg-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   filter: blur(14px);
   opacity: 0.22;
   transform: scale(1.08);
-  z-index: 0;
 }
 
 .ks-bg-overlay {
