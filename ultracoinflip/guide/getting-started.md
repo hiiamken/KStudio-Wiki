@@ -1,12 +1,12 @@
 # Getting Started
 
-<div style="display:flex;align-items:center;gap:16px;margin-bottom:16px">
-  <img src="/KStudio-Wiki/ultracoinflipava.png" alt="UltraCoinFlip" style="width:72px;height:72px;border-radius:12px"/>
-  <div>
-    <h2 style="margin:0">UltraCoinFlip</h2>
-    <p style="margin:4px 0 8px">The most advanced coinflip plugin for Minecraft</p>
-    <a href="https://www.spigotmc.org/resources/%E2%AD%90-ultracoinflip-1-8-x-1-21-11-folia-support.130124/" target="_blank" style="display:inline-block;background:#f87316;color:#fff;padding:5px 14px;border-radius:6px;font-size:0.85rem;font-weight:600;text-decoration:none;margin-right:8px">⬇ SpigotMC</a>
-    <a href="https://modrinth.com/plugin/ultracoinflip" target="_blank" style="display:inline-block;background:#1bd96a;color:#fff;padding:5px 14px;border-radius:6px;font-size:0.85rem;font-weight:600;text-decoration:none">⬇ Modrinth</a>
+<div style="text-align:center;margin:8px 0 36px">
+  <img src="/ultracoinflipava.png" alt="UltraCoinFlip" style="width:120px;height:120px;border-radius:20px;box-shadow:0 6px 24px rgba(0,0,0,0.18)"/>
+  <h2 style="margin:18px 0 6px;font-size:1.75rem">UltraCoinFlip</h2>
+  <p style="margin:0 0 20px;color:var(--vp-c-text-2);font-size:1rem">The most advanced coinflip plugin for Minecraft</p>
+  <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap">
+    <a href="https://www.spigotmc.org/resources/%E2%AD%90-ultracoinflip-1-8-x-1-21-11-folia-support.130124/" target="_blank" style="display:inline-block;background:#f97316;color:#fff;padding:10px 28px;border-radius:8px;font-size:0.95rem;font-weight:700;text-decoration:none;letter-spacing:0.01em">Download on SpigotMC</a>
+    <a href="https://modrinth.com/plugin/ultracoinflip" target="_blank" style="display:inline-block;background:#18c45d;color:#fff;padding:10px 28px;border-radius:8px;font-size:0.95rem;font-weight:700;text-decoration:none;letter-spacing:0.01em">Download on Modrinth</a>
   </div>
 </div>
 
