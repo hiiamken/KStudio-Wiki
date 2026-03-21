@@ -19,7 +19,7 @@ onMounted(() => {
         typed.value += text[i++]
       } else {
         clearInterval(interval)
-        setTimeout(startTyping, 2000)
+        setTimeout(startTyping, 5000)
       }
     }, 110)
   }
@@ -31,9 +31,7 @@ onMounted(() => {
 <div class="ks-page">
 
   <section class="ks-hero">
-    <video class="ks-bg-video" autoplay muted loop playsinline>
-      <source :src="withBase('/assets/backgroundhompage.mp4')" type="video/mp4" />
-    </video>
+    <div class="ks-bg-anim"></div>
     <div class="ks-bg-overlay"></div>
     <div class="ks-hero-content">
       <img :src="withBase('/assets/kstudioavanew.png')" alt="KStudio" class="ks-logo" />
@@ -93,16 +91,18 @@ onMounted(() => {
   overflow: hidden;
 }
 
-.ks-bg-video {
+.ks-bg-anim {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: blur(12px);
-  opacity: 0.2;
-  transform: scale(1.1);
+  background: linear-gradient(-45deg, rgba(201,124,16,0.18), rgba(245,200,66,0.1), rgba(88,101,242,0.08), rgba(201,124,16,0.14));
+  background-size: 400% 400%;
+  animation: ks-grad 10s ease infinite;
   z-index: 0;
+}
+@keyframes ks-grad {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .ks-bg-overlay {
