@@ -4,7 +4,7 @@ layout: home
 hero:
   name: "KStudio"
   text: "Plugin Documentation"
-  tagline: Plugins built for Minecraft server owners who want performance, flexibility, and reliability — no compromises.
+  tagline: We make Minecraft plugins that server owners actually want to use.
   image:
     src: /kstudioava.png
     alt: KStudio
@@ -20,19 +20,19 @@ features:
   - icon:
       src: /ultracoinflipava.png
     title: UltraCoinFlip
-    details: A full-featured coinflip plugin with multi-currency support, provably fair randomness, anti-exploit protection, Discord webhook, Folia compatibility, and 17 languages built in.
+    details: Coinflip plugin with multi-currency support, anti-exploit protection, Discord logging, and Folia compatibility. Runs on Spigot, Paper, and Folia from 1.8 to 1.21.
     link: /ultracoinflip/guide/getting-started
     linkText: View Docs
   - icon:
-      src: /kstudioava.png
+      src: /ultradungeonava.png
     title: UltraDungeon
-    details: Build wave-based dungeon instances with custom bosses, loot rewards, scoring, seasonal leaderboards, and a party system — all configured without touching a single config file.
+    details: Wave-based dungeon instances with custom bosses, loot rewards, scoring, seasonal leaderboards, and party play. Built and configured entirely in-game.
     link: /ultradungeon/guide/getting-started
     linkText: View Docs
   - icon:
       src: /kstudioava.png
-    title: Discord & Support
-    details: Questions, bug reports, or feature requests — join the KStudio Discord server for direct support from the developer.
+    title: Support
+    details: Got a question or ran into a bug? Reach out directly on Discord — no ticket systems, no waiting around.
     link: http://discord.gg/GGDxDnpnDP
     linkText: Join Discord
 ---
