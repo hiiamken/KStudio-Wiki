@@ -8,19 +8,22 @@ import { withBase } from 'vitepress'
 
 const typed = ref('')
 const cursor = ref(true)
-const done = ref(false)
 
 onMounted(() => {
   const text = 'KStudio'
-  let i = 0
-  const typing = setInterval(() => {
-    if (i < text.length) {
-      typed.value += text[i++]
-    } else {
-      clearInterval(typing)
-      done.value = true
-    }
-  }, 110)
+  const startTyping = () => {
+    typed.value = ''
+    let i = 0
+    const interval = setInterval(() => {
+      if (i < text.length) {
+        typed.value += text[i++]
+      } else {
+        clearInterval(interval)
+        setTimeout(startTyping, 2000)
+      }
+    }, 110)
+  }
+  startTyping()
   setInterval(() => { cursor.value = !cursor.value }, 530)
 })
 </script>
@@ -28,34 +31,38 @@ onMounted(() => {
 <div class="ks-page">
 
   <section class="ks-hero">
-    <img :src="withBase('/kstudioavanew.png')" alt="KStudio" class="ks-logo" />
-    <h1 class="ks-title">
-      <span class="ks-typed">{{ typed }}</span><span class="ks-cursor" :style="{ opacity: cursor ? 1 : 0 }">|</span>
-    </h1>
-    <p class="ks-sub">Tài liệu Plugin</p>
-    <p class="ks-tagline">Plugin Minecraft được làm kỹ để dùng được thực sự, không phải để cho có.</p>
-    <div class="ks-cta">
-      <a :href="withBase('/vi/ultracoinflip/guide/getting-started')" class="ks-btn primary">UltraCoinFlip</a>
-      <a :href="withBase('/vi/ultradungeon/guide/getting-started')" class="ks-btn secondary">UltraDungeon</a>
+    <video class="ks-bg-video" autoplay muted loop playsinline>
+      <source :src="withBase('/assets/backgroundhompage.mp4')" type="video/mp4" />
+    </video>
+    <div class="ks-bg-overlay"></div>
+    <div class="ks-hero-content">
+      <img :src="withBase('/assets/kstudioavanew.png')" alt="KStudio" class="ks-logo" />
+      <h1 class="ks-title">
+        <span>{{ typed }}</span><span class="ks-cursor" :style="{ opacity: cursor ? 1 : 0 }">|</span>
+      </h1>
+      <p class="ks-sub">Tài liệu Plugin</p>
+      <p class="ks-tagline">Plugin Minecraft được làm kỹ để dùng được thực sự, không phải để cho có.</p>
     </div>
   </section>
 
   <section class="ks-plugins">
     <a :href="withBase('/vi/ultracoinflip/guide/getting-started')" class="ks-card">
-      <img :src="withBase('/ultracoinflipava.png')" alt="UltraCoinFlip" class="ks-card-img" />
-      <div class="ks-card-body">
-        <h3>UltraCoinFlip</h3>
-        <p>Plugin coinflip hỗ trợ nhiều loại tiền tệ, chống dupe, ghi log Discord, tương thích Folia. Chạy trên Spigot, Paper và Folia từ 1.8 đến 1.21.</p>
-        <span class="ks-card-link">Xem tài liệu →</span>
-      </div>
+      <img :src="withBase('/assets/ultracoinflipava.png')" alt="UltraCoinFlip" class="ks-card-img" />
+      <h3>UltraCoinFlip</h3>
+      <p>Plugin coinflip hỗ trợ nhiều loại tiền tệ, chống dupe, ghi log Discord, tương thích Folia. Chạy trên Spigot, Paper và Folia từ 1.8 đến 1.21.</p>
+      <span class="ks-card-link">Xem tài liệu →</span>
     </a>
     <a :href="withBase('/vi/ultradungeon/guide/getting-started')" class="ks-card">
-      <img :src="withBase('/ultradungeonava.png')" alt="UltraDungeon" class="ks-card-img" />
-      <div class="ks-card-body">
-        <h3>UltraDungeon</h3>
-        <p>Dungeon theo wave với boss, phần thưởng, mùa giải và party. Thiết lập hoàn toàn trong game — không cần chỉnh file config thủ công.</p>
-        <span class="ks-card-link">Xem tài liệu →</span>
-      </div>
+      <img :src="withBase('/assets/ultradungeonava.png')" alt="UltraDungeon" class="ks-card-img" />
+      <h3>UltraDungeon</h3>
+      <p>Dungeon theo wave với boss, phần thưởng, mùa giải và party. Thiết lập hoàn toàn trong game — không cần chỉnh file config thủ công.</p>
+      <span class="ks-card-link">Xem tài liệu →</span>
+    </a>
+    <a href="http://discord.gg/GGDxDnpnDP" target="_blank" class="ks-card ks-card-custom">
+      <div class="ks-card-icon">✦</div>
+      <h3>Custom Plugin</h3>
+      <p>Cần plugin theo yêu cầu riêng cho server? Nhận làm custom plugin theo đặt hàng. Liên hệ qua Discord để hỏi giá và chi tiết.</p>
+      <span class="ks-card-link">Liên hệ qua Discord →</span>
     </a>
   </section>
 
@@ -67,37 +74,75 @@ onMounted(() => {
 </div>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 .ks-page {
-  max-width: 900px;
+  max-width: 960px;
   margin: 0 auto;
-  padding: 48px 24px 96px;
+  padding: 0 24px 96px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .ks-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 500px;
+  margin: 0 -24px;
+  overflow: hidden;
+}
+
+.ks-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(12px);
+  opacity: 0.2;
+  transform: scale(1.1);
+  z-index: 0;
+}
+
+.ks-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    var(--vp-c-bg) 0%,
+    transparent 18%,
+    transparent 75%,
+    var(--vp-c-bg) 100%
+  );
+  z-index: 1;
+}
+
+.ks-hero-content {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 56px 0 72px;
+  padding: 56px 24px 64px;
 }
 
 .ks-logo {
-  width: 104px;
-  height: 104px;
+  width: 100px;
+  height: 100px;
   border-radius: 22px;
-  margin-bottom: 32px;
-  box-shadow: 0 10px 36px rgba(0,0,0,0.16);
+  margin-bottom: 28px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.22);
 }
 
 .ks-title {
-  font-family: 'Cinzel', serif;
-  font-size: 3.8rem;
-  font-weight: 900;
-  letter-spacing: 0.06em;
-  line-height: 1.1;
-  margin: 0 0 12px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 4rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin: 0 0 10px;
   background: linear-gradient(135deg, #c97c10 0%, #f5c842 45%, #e8a020 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -107,64 +152,41 @@ onMounted(() => {
 .ks-cursor {
   display: inline-block;
   font-weight: 300;
-  transition: opacity 0.15s;
-  background: none;
+  transition: opacity 0.1s;
   -webkit-text-fill-color: var(--vp-c-brand-1);
   color: var(--vp-c-brand-1);
 }
 
 .ks-sub {
-  font-family: 'Cinzel', serif;
-  font-size: 0.95rem;
-  letter-spacing: 0.22em;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--vp-c-text-2);
-  margin: 0 0 18px;
+  margin: 0 0 16px;
 }
 
 .ks-tagline {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
+  font-weight: 400;
   color: var(--vp-c-text-2);
-  max-width: 480px;
+  max-width: 440px;
   line-height: 1.7;
-  margin: 0 0 36px;
+  margin: 0;
 }
-
-.ks-cta {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.ks-btn {
-  font-family: 'Inter', sans-serif;
-  display: inline-block;
-  padding: 11px 30px;
-  border-radius: 8px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: opacity 0.2s, transform 0.15s;
-}
-.ks-btn:hover { opacity: 0.82; transform: translateY(-1px); }
-.ks-btn.primary { background: var(--vp-button-brand-bg); color: var(--vp-button-brand-text); }
-.ks-btn.secondary { background: var(--vp-button-alt-bg); color: var(--vp-button-alt-text); }
 
 .ks-plugins {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
-  margin-bottom: 20px;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  margin: 40px 0 20px;
 }
 
 .ks-card {
   display: flex;
-  gap: 18px;
-  align-items: flex-start;
+  flex-direction: column;
   padding: 24px;
-  border-radius: 12px;
+  border-radius: 14px;
   border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg-soft);
   text-decoration: none;
@@ -173,46 +195,63 @@ onMounted(() => {
 .ks-card:hover {
   border-color: var(--vp-c-brand-1);
   transform: translateY(-3px);
-  box-shadow: 0 10px 28px rgba(0,0,0,0.09);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
 .ks-card-img {
-  width: 60px;
-  height: 60px;
+  width: 54px;
+  height: 54px;
   border-radius: 12px;
+  margin-bottom: 16px;
   flex-shrink: 0;
 }
 
-.ks-card-body { flex: 1; }
-.ks-card-body h3 {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.05rem;
+.ks-card-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, #c97c10, #f5c842);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.ks-card h3 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1rem;
   font-weight: 700;
   color: var(--vp-c-text-1);
   margin: 0 0 8px;
 }
-.ks-card-body p {
-  font-size: 0.875rem;
+
+.ks-card p {
+  font-size: 0.845rem;
   color: var(--vp-c-text-2);
   line-height: 1.65;
-  margin: 0 0 14px;
+  margin: 0 0 16px;
+  flex: 1;
 }
+
 .ks-card-link {
-  font-size: 0.875rem;
+  font-size: 0.845rem;
   font-weight: 600;
   color: var(--vp-c-brand-1);
+  margin-top: auto;
 }
 
 .ks-support {
   text-align: center;
   padding: 44px 24px;
-  margin-top: 20px;
-  border-radius: 12px;
+  margin-top: 4px;
+  border-radius: 14px;
   border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg-soft);
 }
 .ks-support p {
-  font-family: 'Inter', sans-serif;
   font-size: 1rem;
   color: var(--vp-c-text-2);
   margin: 0 0 18px;
@@ -223,7 +262,7 @@ onMounted(() => {
   border-radius: 8px;
   background: #5865f2;
   color: #fff !important;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
   font-size: 0.95rem;
   text-decoration: none;
@@ -231,9 +270,11 @@ onMounted(() => {
 }
 .ks-discord-btn:hover { opacity: 0.85; }
 
-@media (max-width: 640px) {
-  .ks-title { font-size: 2.6rem; }
+@media (max-width: 720px) {
+  .ks-title { font-size: 2.8rem; }
   .ks-plugins { grid-template-columns: 1fr; }
-  .ks-card { flex-direction: column; }
+}
+@media (max-width: 480px) {
+  .ks-title { font-size: 2.2rem; }
 }
 </style>

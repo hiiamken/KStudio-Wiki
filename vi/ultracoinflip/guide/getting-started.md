@@ -1,7 +1,7 @@
 # Bắt đầu
 
 <div style="display:flex;flex-direction:column;align-items:center;padding:20px 0 36px;width:100%">
-  <img src="/ultracoinflipava.png" alt="UltraCoinFlip" style="width:160px;height:160px;border-radius:22px;box-shadow:0 8px 28px rgba(0,0,0,0.18)"/>
+  <img src="/assets/ultracoinflipava.png" alt="UltraCoinFlip" style="width:160px;height:160px;border-radius:22px;box-shadow:0 8px 28px rgba(0,0,0,0.18)"/>
   <h2 style="margin:20px 0 6px;font-size:1.8rem;font-weight:700">UltraCoinFlip</h2>
   <p style="margin:0 0 22px;color:var(--vp-c-text-2);font-size:1rem">Plugin coinflip tiên tiến nhất cho Minecraft</p>
   <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
