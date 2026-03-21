@@ -3,33 +3,36 @@ layout: home
 
 hero:
   name: "KStudio"
-  text: "Tài liệu Plugin Minecraft"
-  tagline: Plugin cao cấp được xây dựng với hiệu năng cao, linh hoạt, dành cho các chủ server.
+  text: "Tài liệu Plugin"
+  tagline: Các plugin Minecraft chất lượng cao — được viết để chạy ổn định, dễ cấu hình, và thực sự có ích cho server của bạn.
   image:
-    src: /KStudio-Wiki/logo.png
+    src: /kstudioava.png
     alt: KStudio
   actions:
     - theme: brand
-      text: Tài liệu UltraCoinFlip
+      text: UltraCoinFlip
       link: /vi/ultracoinflip/guide/getting-started
     - theme: alt
-      text: Tài liệu UltraDungeon
+      text: UltraDungeon
       link: /vi/ultradungeon/guide/getting-started
 
 features:
-  - icon: 🎰
+  - icon:
+      src: /ultracoinflipava.png
     title: UltraCoinFlip
-    details: Plugin coinflip cờ bạc nâng cao nhất cho Minecraft. Hỗ trợ nhiều loại tiền tệ, bảo mật chống gian lận, Discord webhook, Folia, và 17 ngôn ngữ.
+    details: Plugin coinflip đầy đủ tính năng — hỗ trợ nhiều loại tiền tệ, chống dupe, Discord webhook, tương thích Folia, sẵn có bản tiếng Việt.
     link: /vi/ultracoinflip/guide/getting-started
     linkText: Xem tài liệu
-  - icon: 🏰
+  - icon:
+      src: /kstudioava.png
     title: UltraDungeon
-    details: Tạo dungeon theo lượt với boss, tính điểm, mùa giải và tiến trình — cấu hình hoàn toàn qua GUI trong game.
+    details: Tạo dungeon theo wave với boss, phần thưởng, bảng xếp hạng theo mùa và hệ thống party — thiết lập hoàn toàn trong game, không cần chỉnh file thủ công.
     link: /vi/ultradungeon/guide/getting-started
     linkText: Xem tài liệu
-  - icon: 💬
-    title: Hỗ trợ Discord
-    details: Cần trợ giúp? Tham gia Discord KStudio để được hỗ trợ trực tiếp từ developer.
+  - icon:
+      src: /kstudioava.png
+    title: Discord & Hỗ trợ
+    details: Hỏi về cách dùng, báo bug, hoặc góp ý tính năng mới — tham gia Discord KStudio để được hỗ trợ trực tiếp.
     link: http://discord.gg/GGDxDnpnDP
     linkText: Tham gia Discord
 ---
