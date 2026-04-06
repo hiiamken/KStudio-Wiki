@@ -1,26 +1,31 @@
 # TokenManager
 
-[TokenManager](https://www.spigotmc.org/resources/tokenmanager.8610/) is a widely-used token economy plugin.
+[TokenManager](https://www.spigotmc.org/resources/tokenmanager.8610/) is a widely used token economy plugin for Minecraft servers.
 
 ## Requirements
 
-- [TokenManager](https://www.spigotmc.org/resources/tokenmanager.8610/) installed on your server.
+- Install [TokenManager](https://www.spigotmc.org/resources/tokenmanager.8610/) on your server.
 
 ## Setup
 
-1. Install `TokenManager.jar` in your `plugins/` folder.
+1. Drop `TokenManager.jar` into your `plugins/` folder.
 2. Restart the server — UltraCoinFlip detects it automatically.
-3. Edit `plugins/UltraCoinFlip/currencies/tokenmanager.yml` to configure limits and display.
+3. Edit `plugins/UltraCoinFlip/currencies/tokenmanager.yml` as needed.
 
-## Config file: `tokenmanager.yml`
+## Config File: `tokenmanager.yml`
 
 ```yaml
 enabled: true
-unit: "🔑"
+unit: "Tokens"
 display-name: "Tokens"
-min-bid: 10
-max-bid: 500000
-tax:
-  enabled: false
-  tiers: []
+syntax-command: "token"           # /cf create token 250
+broadcast-enabled: true
+min-broadcast-amount: 100
+min-bid: 1
+max-bid: -1
+min-reserve-balance: 0
+round-to-integer: false
+tax-enabled: false
+tax-rate: 0.1
+dynamic-tax-enabled: false
 ```

@@ -1,24 +1,27 @@
 # Bảo mật & Chống gian lận
 
-UltraCoinFlip có hệ thống bảo mật nhiều lớp để bảo vệ kinh tế server.
+UltraCoinFlip có hệ thống bảo mật nhiều lớp để bảo vệ kinh tế server khỏi gian lận và khai thác.
 
-## Các lớp bảo vệ
+## Các biện pháp bảo vệ
 
-### Dupe tiền bằng cách disconnect (đã vá từ 3.10.0)
-Người chơi không thể thua xong log out rồi reconnect để lấy lại tiền. Kết quả ván được chốt ngay lập tức — không có khoảng trống nào để disconnect rồi vào lại lấy tiền.
+### Khai thác hoàn tiền khi ngắt kết nối (đã sửa từ 3.10.0)
+Người chơi không thể ngắt kết nối sau khi thua coinflip rồi kết nối lại để nhận hoàn tiền gian lận. Game được hoàn tất ngay khi kết quả được xác định.
 
-### Backup tiền cược
-Trước khi ván bắt đầu, tiền cược được lưu backup. Nếu server crash hoặc người chơi mất kết nối giữa chừng, tiền sẽ tự hoàn lại khi đăng nhập. Backup chỉ xóa sau khi ván kết thúc đúng cách.
+### Hệ thống backup hoàn tiền
+Tất cả cược được backup trước khi game bắt đầu. Nếu server crash hoặc người chơi ngắt kết nối giữa game (trước khi có kết quả), backup được dùng để hoàn tiền khi họ vào lại.
 
-### Kiểm tra số dư
-Sau mỗi lần trừ hoặc cộng tiền, plugin kiểm tra lại xem số dư có đúng không. Nếu plugin economy lỗi mà không báo gì, plugin tự phát hiện và rollback.
+### Xác minh số dư
+Sau mỗi lần trừ và cộng tiền, UltraCoinFlip xác minh số dư người chơi thay đổi đúng số lượng mong đợi. Nếu plugin kinh tế thất bại ngầm, plugin phát hiện và rollback.
 
-### Chống double-click / race condition
-Người chơi không thể vào cùng một ván hai lần hoặc chạy nhiều ván cùng lúc.
+### Chống nhấn đúp / race condition
+Người chơi không thể tham gia cùng một game hai lần hoặc tham gia nhiều game cùng lúc.
+
+### Phát hiện tham gia nhanh
+Hệ thống phát hiện theo dõi các lần tham gia đáng ngờ liên tục. Tần suất cao được ghi log.
 
 ## Log phát hiện khai thác
 
-Hoạt động đáng ngờ được ghi vào `plugins/UltraCoinFlip/exploit-detection.log`.
+Khi phát hiện hoạt động đáng ngờ, nó được ghi vào `plugins/UltraCoinFlip/exploit-detection.log` và (tùy chọn) hiển thị cho admin online.
 
 Cấu hình trong `config.yml`:
 
@@ -31,13 +34,13 @@ exploit-detection:
   admin-permission: "ultracoinflip.admin"
 ```
 
-## Hoàn tiền tự động khi mất kết nối
+## Hệ thống backup hoàn tiền
 
-Cấu hình thời gian chờ trước khi restore trong `config.yml`:
+Nếu người chơi ngắt kết nối giữa game, cược của họ được tự động hoàn khi vào lại. Cấu hình delay trong `config.yml`:
 
 ```yaml
 refund:
-  restore-delay: 2   # giây sau khi vào game trước khi xử lý hoàn tiền
+  restore-delay: 2   # giây sau khi vào trước khi xử lý hoàn tiền
 ```
 
-Tăng lên nếu plugin economy của server cần thêm thời gian để load dữ liệu người chơi.
+Tăng giá trị này nếu plugin kinh tế cần vài giây để load dữ liệu người chơi khi vào.

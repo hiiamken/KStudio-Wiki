@@ -15,7 +15,7 @@ Tính năng **Chơi với Bot** cho phép người chơi tung đồng xu với b
 /coinflip create <currency> <amount> bot
 ```
 
-**Ví dụ:** `/coinflip create vault 5000 bot`
+**Ví dụ:** `/coinflip create money 5000 bot`
 
 ## Cấu hình
 
@@ -37,3 +37,7 @@ house:
 | `ultracoinflip.house.use` | Cho phép chơi với bot |
 | `ultracoinflip.house.bypass.limit` | Bỏ qua giới hạn số trận bot mỗi ngày |
 | `ultracoinflip.house.bypass.delay` | Bỏ qua thời gian chờ giữa các trận bot |
+
+::: warning
+Bot sử dụng cùng thuật toán random bảo mật như coinflip thường. Bot **không có lợi thế** — hoàn toàn 50/50.
+:::

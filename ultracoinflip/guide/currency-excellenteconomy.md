@@ -1,23 +1,23 @@
 # ExcellentEconomy / CoinsEngine
 
-ExcellentEconomy (the renamed version of CoinsEngine) provides multi-currency support via its own currency system.
+ExcellentEconomy (formerly CoinsEngine) provides a multi-currency economy system.
 
 ## Background
 
-CoinsEngine was **renamed to ExcellentEconomy** by its developer. UltraCoinFlip supports both:
+CoinsEngine was **renamed to ExcellentEconomy** by the developer. UltraCoinFlip supports both:
 
-- **ExcellentEconomy** (new) — automatically detected and used when installed
-- **CoinsEngine** (legacy) — still supported with a migration warning in console
+- **ExcellentEconomy** (new) — detected and used automatically
+- **CoinsEngine** (legacy) — still works with a migration warning in console
 
-Both use the **same `coinsengine.yml` config file** — no changes needed when switching.
+Both use the same **`coinsengine.yml`** config file — no changes needed when transitioning.
 
 ## Requirements
 
 Install one of:
 - [ExcellentEconomy](https://github.com/nulli0n/ExcellentEconomy) *(recommended)*
-- CoinsEngine (legacy, still works)
+- CoinsEngine (legacy, still supported)
 
-## Config file: `coinsengine.yml`
+## Config File: `coinsengine.yml`
 
 Each currency defined in ExcellentEconomy gets its own entry:
 
@@ -25,31 +25,42 @@ Each currency defined in ExcellentEconomy gets its own entry:
 currencies:
   coins:
     enabled: true
-    unit: "🪙"
+    unit: "Coins"
     display-name: "Coins"
-    min-bid: 100
-    max-bid: 1000000
-    tax:
-      enabled: false
-      tiers: []
-  gems:
-    enabled: true
-    unit: "💎"
-    display-name: "Gems"
+    syntax-command: "coin"         # /cf create coin 1000
+    broadcast-enabled: true
+    min-broadcast-amount: 100
     min-bid: 1
-    max-bid: 10000
+    max-bid: -1
+    min-reserve-balance: 0
+    round-to-integer: false
+    tax-enabled: true
+    tax-rate: 0.1
+    dynamic-tax-enabled: false
 ```
 
-The key (e.g. `coins`, `gems`) must match the **currency ID** defined in ExcellentEconomy.
+The key (`coins`, `gems`, etc.) must **exactly match** the currency ID in ExcellentEconomy.
+
+## Adding Multiple Currencies
+
+```yaml
+currencies:
+  coins:
+    enabled: true
+    unit: "Coins"
+    display-name: "Coins"
+    syntax-command: "coin"
+    # ...
+  gems:
+    enabled: true
+    unit: "Gems"
+    display-name: "Gems"
+    syntax-command: "gem"
+    # ...
+```
 
 ## Migration from CoinsEngine
 
-If you were using CoinsEngine and are upgrading to ExcellentEconomy:
-
 1. Install ExcellentEconomy and remove CoinsEngine.
-2. Ensure your currency IDs in ExcellentEconomy match the keys in `coinsengine.yml`.
-3. Restart — UltraCoinFlip will automatically switch to the new API.
-
-::: tip
-The console warning `[UltraCoinFlip] CoinsEngine detected — consider upgrading to ExcellentEconomy` only appears when the old CoinsEngine plugin is in use.
-:::
+2. Ensure currency IDs in ExcellentEconomy match the keys in `coinsengine.yml`.
+3. Restart — UltraCoinFlip automatically switches to the new API.

@@ -5,7 +5,7 @@ The main configuration file located at `plugins/UltraCoinFlip/config.yml`.
 ## General Settings
 
 ```yaml
-language: en              # Language file to use (en, vi, fr, de, ru, zh, ...)
+language: en              # Language file to use (en, vi, fr, de, ru, zh_cn, zh_tw, es, ar, it, lt, pt, pl, tr, ko, ja)
 debug: false              # Enable debug logging
 default-currency: vault   # Currency shown by default in GUI
 ```
@@ -31,7 +31,28 @@ database:
 coinflip:
   max-games-per-player: 1       # Max active games per player at once
   heads-tails-selection: true   # Show heads/tails selection screen before creating
-  animation-duration: 60        # Ticks (1s = 20 ticks) for the roll animation
+  keep-on-disconnect: true      # Keep game active if creator disconnects
+```
+
+## Notifications
+
+```yaml
+notifications:
+  title:
+    enabled: true
+  actionbar:
+    enabled: true
+  bossbar:
+    enabled: true
+    color: YELLOW
+    duration: 5            # seconds
+```
+
+## Number Formatting
+
+```yaml
+number-format:
+  type: COMPACT            # COMPACT (K/M/B/T), COMMAS, or FULL
 ```
 
 ## House Bot
@@ -43,13 +64,6 @@ house:
   skin: default             # 'default', player name, or Base64 texture
   daily-limit: 0            # Max bot games per player per day (0 = unlimited)
   cooldown: 0               # Seconds between bot games (0 = no cooldown)
-```
-
-## Tax
-
-```yaml
-tax:
-  enabled: false            # Global tax toggle (also controlled per-currency)
 ```
 
 ## Refund System
@@ -73,7 +87,12 @@ betting-limits:
 discord:
   enabled: false
   webhook-url: ""
-  min-amount: 0             # Minimum bet amount to post
+  game-finished:
+    enabled: true
+    min-amount: 0
+  game-created:
+    enabled: false
+    min-amount: 0
 ```
 
 ## Exploit Detection
@@ -94,4 +113,13 @@ update-checker:
   enabled: true
   notify-console: true
   notify-in-game: true
+```
+
+## Performance
+
+```yaml
+stats-batch:
+  enabled: true              # Batch database writes for better performance
+  auto-flush-seconds: 5
+  max-queue-size: 10
 ```

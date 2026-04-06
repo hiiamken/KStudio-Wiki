@@ -11,7 +11,7 @@ UltraCoinFlip supports multiple currency types simultaneously. Each currency typ
 | TokenManager | `tokenmanager.yml` | TokenManager |
 | BeastTokens | `beasttokens.yml` | BeastTokens |
 | ExcellentEconomy / CoinsEngine | `coinsengine.yml` | ExcellentEconomy or CoinsEngine |
-| Custom (PlaceholderAPI) | `custom/` folder | PlaceholderAPI |
+| Custom (PlaceholderAPI) | `customplaceholder.yml` | PlaceholderAPI |
 
 ## How currencies are detected
 
@@ -29,20 +29,22 @@ Both use the same `coinsengine.yml` config file — no changes needed.
 
 ## Per-currency settings
 
-Each currency config file lets you set:
+Every currency config file supports these settings:
 
 ```yaml
 enabled: true
 unit: "$"
-display-name: "Coins"
-min-bid: 100
-max-bid: 1000000
-tax:
-  enabled: true
-  tiers: ...
-world-restrictions:
-  enabled: false
-  ...
+display-name: "Money"
+syntax-command: "money"          # keyword used in /cf create <keyword> <amount>
+broadcast-enabled: true          # announce games using this currency
+min-broadcast-amount: 100        # minimum bet to trigger broadcast
+min-bid: 1                       # minimum bet amount
+max-bid: -1                      # maximum bet (-1 = unlimited)
+min-reserve-balance: 0           # minimum balance player must keep after betting
+round-to-integer: false          # round winnings to nearest whole number
+tax-enabled: true
+tax-rate: 0.1                    # 10% flat tax rate
+dynamic-tax-enabled: false       # enable tiered tax rates
 ```
 
 See [Currency Files](/ultracoinflip/config/currencies) for the full reference.
