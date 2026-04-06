@@ -18,17 +18,21 @@ Ideal for **economy, survival, skyblock, factions, prison**, or any server looki
 
 ## Key Features
 
-- **Multi-currency support** — Vault, PlayerPoints, TokenManager, BeastTokens, ExcellentEconomy, CoinsEngine, and PlaceholderAPI custom currencies
+- **Multi-currency support** — Vault, PlayerPoints, TokenManager, BeastTokens, ExcellentEconomy, CoinsEngine, and unlimited PlaceholderAPI custom currencies
 - **Database support** — SQLite (default) and MySQL with HikariCP connection pooling
-- **Leaderboard system** — Top 15 players, filterable by wins / profit / largest win / winstreak
+- **Leaderboard system** — Top 15 players, filterable by wins / profit / largest win / winstreak / losses
 - **Play with Bot** — Players can flip against a server-controlled bot
-- **Dynamic tax system** — Tier-based tax rates per currency
+- **Dynamic tax system** — Flat or tiered tax rates, configurable per currency
 - **Betting limits** — Daily / weekly limits per player per currency
-- **Discord webhook** — Post game results to a Discord channel
-- **Fully customizable GUI** — Layout, items, colors, animations
+- **Discord webhook** — Post game results and game creation notifications with PlaceholderAPI support
+- **Round-to-integer** — Option to round winnings for integer-only currencies (tokens, shards, etc.)
+- **Event commands** — Run console commands on game create, start, win, lose, or cancel
+- **Fully customizable GUI** — Layout, items, colors, 4 animation types (default, slot-machine, circular, vertical)
+- **Currency restrictions** — Lock currencies to specific worlds or permissions
 - **Security system** — Anti-exploit protection, automatic refunds, backup system
+- **60+ PlaceholderAPI placeholders** — Stats, profit tracking, leaderboards, player ranking
 - **Folia compatible** — Full support for Paper Folia server software
-- **17 languages** — 🇬🇧 EN 🇻🇳 VI 🇫🇷 FR 🇩🇪 DE 🇷🇺 RU 🇨🇳 ZH 🇪🇸 ES 🇸🇦 AR 🇮🇹 IT and more
+- **17 languages** — EN, VI, FR, DE, RU, ZH, ES, AR, IT, LT, PT, PL, TR, KO, JA and more
 
 ## Quick Start
 
@@ -54,7 +58,7 @@ Run `/coinflip reload` after editing any config file to apply changes without a 
 
 | Plugin | Purpose |
 |---|---|
-| PlaceholderAPI | 40+ placeholders for scoreboards, holograms, etc. |
+| PlaceholderAPI | 60+ placeholders for scoreboards, holograms, etc. |
 | PlayerPoints | Use points as coinflip currency |
 | TokenManager | Use tokens as coinflip currency |
 | BeastTokens | Use beast tokens as coinflip currency |

@@ -18,11 +18,16 @@
 enabled: true
 unit: "⭐"
 display-name: "Points"
-min-bid: 10
-max-bid: 100000
-tax:
-  enabled: false
-  tiers: []
+syntax-command: "point"           # /cf create point 500
+broadcast-enabled: true
+min-broadcast-amount: 100
+min-bid: 1
+max-bid: -1
+min-reserve-balance: 0
+round-to-integer: false
+tax-enabled: false
+tax-rate: 0.1
+dynamic-tax-enabled: false
 ```
 
 ## Ghi chú

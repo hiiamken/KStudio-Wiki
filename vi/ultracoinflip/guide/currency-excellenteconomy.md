@@ -25,19 +25,39 @@ Mỗi tiền tệ định nghĩa trong ExcellentEconomy có một mục riêng:
 currencies:
   coins:
     enabled: true
-    unit: "🪙"
-    display-name: "Xu"
-    min-bid: 100
-    max-bid: 1000000
-  gems:
-    enabled: true
-    unit: "💎"
-    display-name: "Gem"
+    unit: "Coins"
+    display-name: "Coins"
+    syntax-command: "coin"         # /cf create coin 1000
+    broadcast-enabled: true
+    min-broadcast-amount: 100
     min-bid: 1
-    max-bid: 10000
+    max-bid: -1
+    min-reserve-balance: 0
+    round-to-integer: false
+    tax-enabled: true
+    tax-rate: 0.1
+    dynamic-tax-enabled: false
 ```
 
 Khóa (`coins`, `gems`) phải khớp chính xác với **ID tiền tệ** trong ExcellentEconomy.
+
+## Thêm nhiều loại tiền
+
+```yaml
+currencies:
+  coins:
+    enabled: true
+    unit: "Coins"
+    display-name: "Coins"
+    syntax-command: "coin"
+    # ...
+  gems:
+    enabled: true
+    unit: "Gems"
+    display-name: "Gems"
+    syntax-command: "gem"
+    # ...
+```
 
 ## Migration từ CoinsEngine
 

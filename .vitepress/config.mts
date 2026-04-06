@@ -107,6 +107,7 @@ export default defineConfig({
                 { text: 'ExcellentEconomy', link: '/ultracoinflip/guide/currency-excellenteconomy' },
                 { text: 'BeastTokens', link: '/ultracoinflip/guide/currency-beasttokens' },
                 { text: 'TokenManager', link: '/ultracoinflip/guide/currency-tokenmanager' },
+                { text: 'Custom (PlaceholderAPI)', link: '/ultracoinflip/guide/currency-customplaceholder' },
               ],
             },
             {
@@ -230,6 +231,7 @@ export default defineConfig({
                 { text: 'ExcellentEconomy', link: '/vi/ultracoinflip/guide/currency-excellenteconomy' },
                 { text: 'BeastTokens', link: '/vi/ultracoinflip/guide/currency-beasttokens' },
                 { text: 'TokenManager', link: '/vi/ultracoinflip/guide/currency-tokenmanager' },
+                { text: 'Custom (PlaceholderAPI)', link: '/vi/ultracoinflip/guide/currency-customplaceholder' },
               ],
             },
             {

@@ -16,11 +16,16 @@
 
 ```yaml
 enabled: true
-unit: "🐾"
-display-name: "Tokens"
-min-bid: 10
-max-bid: 500000
-tax:
-  enabled: false
-  tiers: []
+unit: "Tokens"
+display-name: "BeastTokens"
+syntax-command: "beasttokens"     # /cf create beasttokens 100
+broadcast-enabled: true
+min-broadcast-amount: 100
+min-bid: 1
+max-bid: -1
+min-reserve-balance: 0
+round-to-integer: false
+tax-enabled: false
+tax-rate: 0.1
+dynamic-tax-enabled: false
 ```
