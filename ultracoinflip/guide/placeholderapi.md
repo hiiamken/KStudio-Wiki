@@ -20,7 +20,7 @@ UltraCoinFlip provides **60+ placeholders** for use in scoreboards, holograms, c
 | `%coinflip_winrate_<currency>%` | Win rate for a specific currency |
 | `%coinflip_winrate_<currency>_formatted%` | Win rate for a currency with `%` symbol |
 
-**Supported currencies:** `money`, `playerpoints`, `tokenmanager`, `beasttokens`
+**Supported currencies:** `money`, `playerpoints`, `tokenmanager`, `beasttokens`, and custom placeholder currency IDs
 
 ## Profit Tracking
 
@@ -31,9 +31,9 @@ Replace `<currency>` with the currency ID. Short aliases are also available.
 | `%coinflip_profit_money%` | `%coinflip_profit_m%` | Total money won |
 | `%coinflip_loss_money%` | `%coinflip_loss_m%` | Total money lost |
 | `%coinflip_net_profit_money%` | `%coinflip_net_m%` | Net profit (won - lost) |
-| `%coinflip_profit_money_formatted%` | `%coinflip_profit_m_formatted%` | Formatted profit |
-| `%coinflip_loss_money_formatted%` | `%coinflip_loss_m_formatted%` | Formatted losses |
-| `%coinflip_net_profit_money_formatted%` | `%coinflip_net_m_formatted%` | Formatted net profit |
+| `%coinflip_profit_money_formatted%` | `%coinflip_profit_m_formatted%` | Formatted profit (with commas) |
+| `%coinflip_loss_money_formatted%` | `%coinflip_loss_m_formatted%` | Formatted losses (with commas) |
+| `%coinflip_net_profit_money_formatted%` | `%coinflip_net_m_formatted%` | Formatted net profit (with commas) |
 
 Same pattern applies for `playerpoints` (alias `pp`), `tokenmanager` (alias `tm`), and `beasttokens` (alias `bt`).
 
@@ -102,9 +102,13 @@ For **Custom PlaceholderAPI** currencies:
 | `%coinflip_placeholder_<id>_display%` | Currency display name |
 | `%coinflip_<id>_unit%` | Short format (same as above) |
 | `%coinflip_<id>_display%` | Short format (same as above) |
+| `%coinflip_winrate_<id>%` | Win rate for this currency |
+| `%coinflip_winrate_<id>_formatted%` | Win rate with `%` symbol |
+| `%coinflip_win_percentage_<id>%` | Win percentage (alias) |
+| `%coinflip_win_percentage_<id>_formatted%` | Win percentage with `%` symbol (alias) |
 
-::: warning
-Custom PlaceholderAPI currencies are **not tracked** in statistics. Profit/loss/winrate placeholders for custom currencies will return `0`. Only built-in currencies (money, playerpoints, tokenmanager, beasttokens) have statistics tracking.
+::: warning Partial Statistics
+Custom PlaceholderAPI currencies track **win rate** but do **not** track profit/loss. Profit, loss, and net profit placeholders for custom currencies will return `0`. Only built-in currencies (money, playerpoints, tokenmanager, beasttokens) have full profit/loss statistics tracking.
 :::
 
 ::: tip

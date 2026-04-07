@@ -25,7 +25,9 @@ currencies:
     unit: 'Orbs'
     display-name: 'Orbs'
     give-command: 'orbs give {player} {amount} -s'
+    # Choose ONE: remove-command OR set-command (leave the other empty)
     remove-command: 'orbs remove {player} {amount} -s'
+    set-command: ''                          # alternative for plugins without a withdraw command
     syntax-command: 'orb'                   # used in /cf create orb 500
     broadcast-enabled: true
     min-broadcast-amount: 100
@@ -48,7 +50,34 @@ currencies:
         - min-amount: 1000
           max-amount: -1
           tax-rate: 0.15
+    restrictions:
+      enabled: false
+      allowed-worlds: []
+      blocked-worlds: []
+      required-permissions: []
+    event-commands:
+      on-created:
+        commands: []
+      on-start:
+        commands: []
+      on-win:
+        commands: []
+      on-lose:
+        commands: []
+      on-cancelled:
+        commands: []
 ```
+
+## Withdraw Methods
+
+You have two options for removing currency from players. Use **one** and leave the other empty:
+
+| Option | When to use |
+|---|---|
+| `remove-command` | The plugin has a withdraw/take command (most plugins) |
+| `set-command` | The plugin only has a set-balance command (e.g. DeluxeMobCoins) |
+
+When using `set-command`, UltraCoinFlip reads the current balance, subtracts the bet, and sets the new value automatically.
 
 ## Adding Multiple Currencies
 
@@ -71,6 +100,37 @@ currencies:
     # ... (full config)
 ```
 
+## Restrictions
+
+Each currency can optionally restrict usage by world or permission:
+
+```yaml
+restrictions:
+  enabled: false
+  allowed-worlds: []        # empty = all worlds allowed
+  blocked-worlds: []        # takes priority over allowed-worlds
+  required-permissions: []  # player needs at least one
+```
+
+## Event Commands
+
+Run console commands when specific game events happen. Use `{player}`, `{opponent}`, `{amount}`, `{currency}` placeholders:
+
+```yaml
+event-commands:
+  on-created:
+    commands: []
+  on-start:
+    commands: []
+  on-win:
+    commands:
+      - 'broadcast {player} won {amount} {currency}!'
+  on-lose:
+    commands: []
+  on-cancelled:
+    commands: []
+```
+
 ## Placeholders
 
 Custom currencies provide these PlaceholderAPI placeholders:
@@ -81,11 +141,15 @@ Custom currencies provide these PlaceholderAPI placeholders:
 | `%coinflip_placeholder_<id>_display%` | Currency display name |
 | `%coinflip_<id>_unit%` | Short format |
 | `%coinflip_<id>_display%` | Short format |
+| `%coinflip_winrate_<id>%` | Win rate for this currency |
+| `%coinflip_winrate_<id>_formatted%` | Win rate with `%` symbol |
+| `%coinflip_win_percentage_<id>%` | Win percentage (alias) |
+| `%coinflip_win_percentage_<id>_formatted%` | Win percentage with `%` symbol (alias) |
 
 In GUI configs, use: `<placeholder_<id>_unit>` or `<placeholder_<id>_display>`
 
-::: warning Statistics Not Tracked
-Custom PlaceholderAPI currencies are **not** tracked in the statistics/leaderboard system. Profit, loss, and winrate placeholders for custom currencies will return `0`. Only built-in currencies (money, playerpoints, tokenmanager, beasttokens) have full statistics tracking.
+::: warning Partial Statistics
+Custom PlaceholderAPI currencies track **win rate** but do **not** track profit/loss. Profit, loss, and net profit placeholders for custom currencies will return `0`. Only built-in currencies (money, playerpoints, tokenmanager, beasttokens) have full profit/loss statistics tracking.
 :::
 
 ::: tip Round-to-Integer
