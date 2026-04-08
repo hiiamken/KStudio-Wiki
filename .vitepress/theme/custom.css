@@ -1,0 +1,108 @@
+/* ── KStudio Gold Theme ─────────────────────────────────── */
+
+/* Light mode: gold + warm white */
+:root {
+  --vp-c-brand-1: #b8860b;
+  --vp-c-brand-2: #d4a017;
+  --vp-c-brand-3: #c9950a;
+  --vp-c-brand-soft: rgba(184, 134, 11, 0.12);
+
+  --vp-c-tip-1: var(--vp-c-brand-1);
+  --vp-c-tip-2: var(--vp-c-brand-2);
+  --vp-c-tip-3: var(--vp-c-brand-3);
+  --vp-c-tip-soft: var(--vp-c-brand-soft);
+
+  /* Sidebar active item */
+  --vp-c-default-1: var(--vp-c-brand-1);
+
+  /* Light backgrounds */
+  --vp-c-bg: #fefcf8;
+  --vp-c-bg-soft: #faf6ee;
+  --vp-c-bg-alt: #f5f0e4;
+  --vp-c-bg-elv: #ffffff;
+
+  /* Text */
+  --vp-c-text-1: #2c2215;
+  --vp-c-text-2: #6b5d4a;
+  --vp-c-text-3: #9a8c78;
+
+  /* Borders */
+  --vp-c-divider: rgba(184, 134, 11, 0.15);
+
+  /* Button brand */
+  --vp-button-brand-bg: #c9950a;
+  --vp-button-brand-hover-bg: #b8860b;
+  --vp-button-brand-active-bg: #a67909;
+  --vp-button-brand-text: #ffffff;
+}
+
+/* Dark mode: gold + deep black */
+.dark {
+  --vp-c-brand-1: #e8a020;
+  --vp-c-brand-2: #f5c842;
+  --vp-c-brand-3: #d4940e;
+  --vp-c-brand-soft: rgba(232, 160, 32, 0.12);
+
+  --vp-c-tip-1: var(--vp-c-brand-1);
+  --vp-c-tip-2: var(--vp-c-brand-2);
+  --vp-c-tip-3: var(--vp-c-brand-3);
+  --vp-c-tip-soft: var(--vp-c-brand-soft);
+
+  --vp-c-default-1: var(--vp-c-brand-1);
+
+  /* Dark backgrounds */
+  --vp-c-bg: #0d0b08;
+  --vp-c-bg-soft: #161210;
+  --vp-c-bg-alt: #1a1511;
+  --vp-c-bg-elv: #1e1914;
+
+  /* Text */
+  --vp-c-text-1: #f5efe6;
+  --vp-c-text-2: #b5a48e;
+  --vp-c-text-3: #8a7a66;
+
+  /* Borders */
+  --vp-c-divider: rgba(232, 160, 32, 0.12);
+
+  /* Button brand */
+  --vp-button-brand-bg: #d4940e;
+  --vp-button-brand-hover-bg: #e8a020;
+  --vp-button-brand-active-bg: #c9850a;
+  --vp-button-brand-text: #0d0b08;
+}
+
+/* ── Navbar styling ────────────────────────────────────── */
+
+.VPNav {
+  border-bottom-color: var(--vp-c-divider) !important;
+}
+
+/* ── Sidebar active link gold accent ───────────────────── */
+
+.VPSidebarItem.is-active > .item > .indicator {
+  background-color: var(--vp-c-brand-1) !important;
+}
+
+.VPSidebarItem.is-active > .item > .link > .text {
+  color: var(--vp-c-brand-1) !important;
+}
+
+/* ── Code block tint ───────────────────────────────────── */
+
+.dark .vp-code-group .tabs label.active {
+  color: var(--vp-c-brand-1);
+}
+
+.dark div[class*='language-'] > button.copy {
+  border-color: var(--vp-c-divider);
+}
+
+/* ── Scrollbar gold tint (subtle) ──────────────────────── */
+
+::-webkit-scrollbar-thumb {
+  background: var(--vp-c-brand-soft);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--vp-c-brand-3);
+}
