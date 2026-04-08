@@ -9,6 +9,12 @@
 | `ultracoinflip.admin` | Access admin commands and audit dashboard | `op` |
 | `ultracoinflip.silent` | Disable global game announcements for this player | `false` |
 
+## Stats Permissions
+
+| Permission | Description | Default |
+|---|---|---|
+| `ultracoinflip.stats.others` | View other players' stats with `/cf stats <player>` | `op` |
+
 ## Bypass Permissions
 
 | Permission | Description | Default |
