@@ -15,6 +15,8 @@ All commands use `/coinflip` or the alias `/cf`.
 | `/coinflip history` | View your personal game history |
 | `/cf settings` | Open player notification settings |
 | `/cf leaderboard` | View the top players leaderboard |
+| `/cf stats` | View your own coinflip statistics |
+| `/cf stats <player>` | View another player's statistics |
 
 ## Admin Commands
 
@@ -36,6 +38,10 @@ UltraCoinFlip supports shorthand amount notation:
 | `1t` | 1,000,000,000,000 |
 
 **Example:** `/coinflip create money 500k` creates a game for 500,000 Vault coins.
+
+::: tip Default Currency
+If you set `default-currency` in `config.yml`, players can skip the currency keyword: `/cf create 500k` will use the configured default currency automatically.
+:::
 
 ::: tip
 The `bot` keyword at the end of `/coinflip create` starts an instant game against the bot — no waiting for another player.
