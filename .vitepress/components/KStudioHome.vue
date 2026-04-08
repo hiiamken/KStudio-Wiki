@@ -1,7 +1,13 @@
 <template>
   <div class="ks-page">
+    <!-- Video background with poster for instant display -->
     <div class="ks-bg-video-wrap">
-      <video class="ks-bg-video" autoplay muted loop playsinline>
+      <video
+        class="ks-bg-video"
+        autoplay muted loop playsinline
+        preload="auto"
+        @loadeddata="videoLoaded = true"
+      >
         <source :src="withBase('/assets/backgroundhompage.mp4')" type="video/mp4" />
       </video>
     </div>
@@ -18,23 +24,14 @@
       </section>
 
       <section class="ks-plugins">
-        <a :href="withBase(isVI ? '/vi/ultracoinflip/guide/getting-started' : '/ultracoinflip/guide/getting-started')" class="ks-card">
-          <img :src="withBase('/assets/ultracoinflipava.png')" alt="UltraCoinFlip" class="ks-card-img" />
-          <h3>UltraCoinFlip</h3>
-          <p>{{ isVI ? 'Plugin coinflip hỗ trợ nhiều loại tiền tệ, chống dupe, ghi log Discord, tương thích Folia. Chạy trên Spigot, Paper và Folia từ 1.8 đến 1.21.' : 'Coinflip plugin with multi-currency support, anti-exploit protection, Discord logging, and Folia compatibility. Runs on Spigot, Paper and Folia from 1.8 to 1.21.' }}</p>
-          <span class="ks-card-link">{{ isVI ? 'Xem tài liệu →' : 'View Docs →' }}</span>
-        </a>
-        <a :href="withBase(isVI ? '/vi/ultradungeon/guide/getting-started' : '/ultradungeon/guide/getting-started')" class="ks-card">
-          <img :src="withBase('/assets/ultradungeonava.png')" alt="UltraDungeon" class="ks-card-img" />
-          <h3>UltraDungeon</h3>
-          <p>{{ isVI ? 'Dungeon theo wave với boss, phần thưởng, mùa giải và party. Thiết lập hoàn toàn trong game — không cần chỉnh file config thủ công.' : 'Wave-based dungeon instances with custom bosses, loot, scoring, seasonal leaderboards, and party play. Built and configured entirely in-game.' }}</p>
-          <span class="ks-card-link">{{ isVI ? 'Xem tài liệu →' : 'View Docs →' }}</span>
-        </a>
-        <a href="http://discord.gg/GGDxDnpnDP" target="_blank" class="ks-card ks-card-custom">
-          <div class="ks-card-icon">✦</div>
-          <h3>Custom Plugin</h3>
-          <p>{{ isVI ? 'Cần plugin theo yêu cầu riêng cho server? Nhận làm custom plugin theo đặt hàng. Liên hệ qua Discord để hỏi giá và chi tiết.' : 'Need something tailor-made for your server? We take custom plugin commissions. Reach out on Discord for pricing and details.' }}</p>
-          <span class="ks-card-link">{{ isVI ? 'Liên hệ qua Discord →' : 'Contact on Discord →' }}</span>
+        <a v-for="plugin in plugins" :key="plugin.name"
+           :href="withBase(plugin.link)"
+           class="ks-card">
+          <img v-if="plugin.img" :src="withBase(plugin.img)" :alt="plugin.name" class="ks-card-img" />
+          <div v-else class="ks-card-icon">{{ plugin.icon }}</div>
+          <h3>{{ plugin.name }}</h3>
+          <p>{{ isVI ? plugin.descVI : plugin.descEN }}</p>
+          <span class="ks-card-link">{{ isVI ? plugin.linkTextVI : plugin.linkTextEN }}</span>
         </a>
       </section>
 
@@ -52,9 +49,44 @@ import { withBase, useData } from 'vitepress'
 
 const { lang } = useData()
 const isVI = computed(() => lang.value === 'vi')
+const videoLoaded = ref(false)
 
 const typed = ref('')
 const cursorVisible = ref(true)
+
+// Plugin registry — add new plugins here
+const plugins = computed(() => {
+  const vi = isVI.value
+  return [
+    {
+      name: 'UltraCoinFlip',
+      img: '/assets/ultracoinflipava.png',
+      link: vi ? '/vi/ultracoinflip/guide/getting-started' : '/ultracoinflip/guide/getting-started',
+      descEN: 'Coinflip plugin with multi-currency support, anti-exploit protection, Discord logging, and Folia compatibility.',
+      descVI: 'Plugin coinflip hỗ trợ nhiều loại tiền tệ, chống dupe, ghi log Discord, tương thích Folia.',
+      linkTextEN: 'View Docs →',
+      linkTextVI: 'Xem tài liệu →',
+    },
+    {
+      name: 'UltraDungeon',
+      img: '/assets/ultradungeonava.png',
+      link: vi ? '/vi/ultradungeon/guide/getting-started' : '/ultradungeon/guide/getting-started',
+      descEN: 'Wave-based dungeon instances with custom bosses, loot, scoring, seasonal leaderboards, and party play.',
+      descVI: 'Dungeon theo wave với boss, phần thưởng, mùa giải và party. Thiết lập hoàn toàn trong game.',
+      linkTextEN: 'View Docs →',
+      linkTextVI: 'Xem tài liệu →',
+    },
+    {
+      name: 'Custom Plugin',
+      icon: '✦',
+      link: 'http://discord.gg/GGDxDnpnDP',
+      descEN: 'Need something tailor-made for your server? We take custom plugin commissions. Reach out on Discord.',
+      descVI: 'Cần plugin theo yêu cầu riêng cho server? Nhận làm custom plugin. Liên hệ qua Discord.',
+      linkTextEN: 'Contact on Discord →',
+      linkTextVI: 'Liên hệ qua Discord →',
+    },
+  ]
+})
 
 onMounted(() => {
   const text = 'KStudio'
@@ -97,16 +129,17 @@ onMounted(() => {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: blur(14px);
-  opacity: 0.22;
-  transform: scale(1.08);
+  filter: blur(6px);
+  opacity: 0.35;
+  transform: scale(1.04);
+  transition: opacity 0.8s ease;
 }
 
 .ks-bg-overlay {
   position: absolute;
   inset: 0;
   background: var(--vp-c-bg);
-  opacity: 0.72;
+  opacity: 0.55;
   z-index: 1;
 }
 
@@ -127,11 +160,12 @@ onMounted(() => {
 }
 
 .ks-logo {
-  width: 100px;
-  height: 100px;
-  border-radius: 22px;
+  width: 140px;
+  height: 140px;
+  border-radius: 28px;
   margin-bottom: 28px;
   box-shadow: 0 12px 40px rgba(0,0,0,0.22);
+  object-fit: contain;
 }
 
 .ks-title {
@@ -277,9 +311,11 @@ onMounted(() => {
 @media (max-width: 720px) {
   .ks-title { font-size: 2.8rem; }
   .ks-plugins { grid-template-columns: 1fr; }
+  .ks-logo { width: 110px; height: 110px; }
 }
 
 @media (max-width: 480px) {
   .ks-title { font-size: 2.2rem; }
+  .ks-logo { width: 90px; height: 90px; border-radius: 20px; }
 }
 </style>
