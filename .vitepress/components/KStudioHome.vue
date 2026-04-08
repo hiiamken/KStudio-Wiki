@@ -19,11 +19,15 @@
         <p class="ks-tagline">{{ isVI ? 'Plugin Minecraft được làm kỹ để dùng được thực sự, không phải để cho có.' : 'We make Minecraft plugins that server owners actually want to use.' }}</p>
       </section>
 
-      <!-- Stats banner -->
+      <!-- Stats cards -->
       <section class="ks-stats">
-        <div class="ks-stat" v-for="stat in stats" :key="stat.label">
+        <div class="ks-stat-card" v-for="stat in stats" :key="stat.label">
+          <div class="ks-stat-icon-wrap">
+            <span class="ks-stat-icon">{{ stat.icon }}</span>
+          </div>
           <span class="ks-stat-value">{{ stat.value }}</span>
           <span class="ks-stat-label">{{ isVI ? stat.labelVI : stat.label }}</span>
+          <span class="ks-stat-sub">{{ isVI ? stat.subVI : stat.sub }}</span>
         </div>
       </section>
 
@@ -118,10 +122,21 @@ onMounted(async () => {
 })
 
 const stats = computed(() => [
-  { value: serverCount.value, label: 'Active Servers', labelVI: 'Server đang dùng' },
-  { value: playerCount.value, label: 'Peak Players', labelVI: 'Người chơi cao điểm' },
-  { value: '17', label: 'Languages', labelVI: 'Ngôn ngữ' },
-  { value: '1.8 – 26.x', label: 'MC Versions', labelVI: 'Phiên bản MC' },
+  {
+    icon: '🖥️', value: serverCount.value,
+    label: 'Active Servers', labelVI: 'Server đang dùng',
+    sub: 'Growing rapidly', subVI: 'Tăng trưởng nhanh',
+  },
+  {
+    icon: '👥', value: playerCount.value,
+    label: 'Peak Players', labelVI: 'Người chơi cao điểm',
+    sub: 'Growing daily', subVI: 'Tăng mỗi ngày',
+  },
+  {
+    icon: '🌐', value: '17',
+    label: 'Languages Supported', labelVI: 'Ngôn ngữ hỗ trợ',
+    sub: 'Community translated', subVI: 'Cộng đồng dịch',
+  },
 ])
 
 // Plugin registry — add new plugins here
@@ -268,42 +283,62 @@ const plugins = computed(() => {
   margin: 0;
 }
 
-/* ── Stats banner ───────────────────────────────────────── */
+/* ── Stats cards ────────────────────────────────────────── */
 
 .ks-stats {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
   margin: 0 0 28px;
-  border-radius: 14px;
-  overflow: hidden;
-  border: 1px solid var(--vp-c-divider);
-  background: var(--vp-c-divider);
 }
 
-.ks-stat {
+.ks-stat-card {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 20px 12px;
+  align-items: flex-start;
+  padding: 28px 24px;
+  border-radius: 14px;
+  border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg-soft);
+}
+
+.ks-stat-icon-wrap {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: var(--vp-c-bg-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.ks-stat-icon {
+  font-size: 1.15rem;
+  line-height: 1;
 }
 
 .ks-stat-value {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 1.5rem;
+  font-size: 2.6rem;
   font-weight: 800;
-  color: var(--vp-c-brand-1);
-  letter-spacing: -0.01em;
+  color: var(--vp-c-text-1);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 6px;
 }
 
 .ks-stat-label {
-  font-size: 0.75rem;
+  font-size: 0.88rem;
   font-weight: 500;
-  color: var(--vp-c-text-3);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-top: 4px;
+  color: var(--vp-c-text-2);
+  margin-bottom: 4px;
+}
+
+.ks-stat-sub {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #22c55e;
 }
 
 /* ── Plugin cards ───────────────────────────────────────── */
@@ -416,14 +451,13 @@ const plugins = computed(() => {
 @media (max-width: 720px) {
   .ks-title { font-size: 2.8rem; }
   .ks-plugins { grid-template-columns: 1fr; }
-  .ks-stats { grid-template-columns: repeat(2, 1fr); }
+  .ks-stats { grid-template-columns: 1fr; }
   .ks-logo { width: 110px; height: 110px; }
 }
 
 @media (max-width: 480px) {
   .ks-title { font-size: 2.2rem; }
   .ks-logo { width: 90px; height: 90px; border-radius: 20px; }
-  .ks-stats { grid-template-columns: repeat(2, 1fr); }
-  .ks-stat-value { font-size: 1.2rem; }
+  .ks-stat-value { font-size: 2rem; }
 }
 </style>
