@@ -114,3 +114,25 @@ Custom PlaceholderAPI currencies track **win rate** but do **not** track profit/
 ::: tip
 Install [PlaceholderAPI](https://www.spigotmc.org/resources/placeholderapi.6245/) on your server and UltraCoinFlip will register its expansion automatically on startup.
 :::
+
+## Actor Prefix/Suffix in Messages
+
+When writing broadcast or win/lose messages in your language file, `%luckperms_prefix%` resolves against the **viewer** (the player receiving the message), not the actual winner/loser/creator. That means a win broadcast would show each viewer's own prefix instead of the winner's.
+
+To fix that, UltraCoinFlip pre-resolves LuckPerms prefix/suffix for each actor and exposes them as MiniMessage placeholders:
+
+| Placeholder | Available in | Resolves to |
+|---|---|---|
+| `<player_prefix>`, `<player_suffix>` | `command.broadcast-created` | Creator's LuckPerms prefix/suffix |
+| `<winner_prefix>`, `<winner_suffix>` | `game.winner`, `game.broadcast-result` | Winner's LuckPerms prefix/suffix |
+| `<loser_prefix>`, `<loser_suffix>` | `game.loser`, `game.broadcast-result` | Loser's LuckPerms prefix/suffix |
+| `<opponent_prefix>`, `<opponent_suffix>` | `game.consecutive-win` | Opponent's LuckPerms prefix/suffix |
+
+**Example** — showing each player's prefix correctly in a win broadcast:
+
+```yaml
+game:
+  broadcast-result: '&fPlayer <winner_prefix>&a<winner> &fwon against <loser_prefix>&c<loser> &fin coinflip!'
+```
+
+Standard PAPI placeholders like `%vault_eco_balance%` or `%server_online%` still resolve per-viewer as normal.
