@@ -9,6 +9,27 @@
 | `ultracoinflip.admin` | Truy cập lệnh admin và bảng audit | `op` |
 | `ultracoinflip.silent` | Tắt thông báo game toàn server cho người chơi này | `false` |
 
+## Quyền theo từng subcommand
+
+Mỗi subcommand `/cf` có node quyền riêng. Tất cả mặc định `true`, nên server cũ vẫn hoạt động bình thường — đặt thành `false` để ẩn lệnh đó khỏi một group.
+
+| Quyền | Subcommand | Mặc định |
+|---|---|---|
+| `ultracoinflip.command.menu` | `/cf` (mở menu chính) | `true` |
+| `ultracoinflip.command.create` | `/cf create` | `true` |
+| `ultracoinflip.command.delete` | `/cf delete` | `true` |
+| `ultracoinflip.command.history` | `/cf history` | `true` |
+| `ultracoinflip.command.leaderboard` | `/cf leaderboard` | `true` |
+| `ultracoinflip.command.settings` | `/cf settings` | `true` |
+| `ultracoinflip.command.stats` | `/cf stats` | `true` |
+| `ultracoinflip.command.help` | `/cf help` | `true` |
+
+**Ví dụ** — ẩn leaderboard khỏi player thường:
+
+```
+/lp group default permission set ultracoinflip.command.leaderboard false
+```
+
 ## Quyền bỏ qua
 
 | Quyền | Mô tả | Mặc định |
