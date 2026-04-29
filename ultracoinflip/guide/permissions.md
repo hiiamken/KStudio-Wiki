@@ -9,6 +9,27 @@
 | `ultracoinflip.admin` | Access admin commands and audit dashboard | `op` |
 | `ultracoinflip.silent` | Disable global game announcements for this player | `false` |
 
+## Per-Subcommand Permissions
+
+Each `/cf` subcommand has its own permission node. All default to `true`, so existing servers keep working — set any to `false` to hide that command from a group.
+
+| Permission | Subcommand | Default |
+|---|---|---|
+| `ultracoinflip.command.menu` | `/cf` (open the main menu) | `true` |
+| `ultracoinflip.command.create` | `/cf create` | `true` |
+| `ultracoinflip.command.delete` | `/cf delete` | `true` |
+| `ultracoinflip.command.history` | `/cf history` | `true` |
+| `ultracoinflip.command.leaderboard` | `/cf leaderboard` | `true` |
+| `ultracoinflip.command.settings` | `/cf settings` | `true` |
+| `ultracoinflip.command.stats` | `/cf stats` | `true` |
+| `ultracoinflip.command.help` | `/cf help` | `true` |
+
+**Example** — hide the leaderboard from regular players:
+
+```
+/lp group default permission set ultracoinflip.command.leaderboard false
+```
+
 ## Stats Permissions
 
 | Permission | Description | Default |

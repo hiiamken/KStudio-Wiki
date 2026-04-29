@@ -85,6 +85,33 @@ Use these placeholders to display a top-players list.
 | `%coinflip_top_5_largest-win_playerpoints_value_formatted%` | #5 largest PlayerPoints win (formatted) |
 | `%coinflip_top_1_losses_name%` | Name of #1 player by total losses |
 
+### Refresh Countdown
+
+| Placeholder | Description |
+|---|---|
+| `%coinflip_leaderboard_refresh_in%` | Live countdown to the next leaderboard cache refresh (e.g. `2m20s`) |
+
+The countdown reads the soonest-to-expire cache entry and ticks down in real time — perfect as a footer line on a hologram leaderboard.
+
+```yaml
+# Format is configurable in config.yml under leaderboard.refresh-countdown-format
+leaderboard:
+  refresh-countdown-format:
+    hours: '<h>h<m>m'    # used when 1+ hour remains
+    minutes: '<m>m<s>s'  # used when under 1 hour
+    seconds: '<s>s'      # used when under 1 minute
+```
+
+**Hologram example (DecentHolograms):**
+
+```
+&6&lTOP WINS
+&71. %coinflip_top_1_wins_money_name% — %coinflip_top_1_wins_money_value_formatted%
+&72. %coinflip_top_2_wins_money_name% — %coinflip_top_2_wins_money_value_formatted%
+&73. %coinflip_top_3_wins_money_name% — %coinflip_top_3_wins_money_value_formatted%
+&8Next refresh: &e%coinflip_leaderboard_refresh_in%
+```
+
 ## Custom Currency Placeholders
 
 For **CoinsEngine / ExcellentEconomy** currencies:

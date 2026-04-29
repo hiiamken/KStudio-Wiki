@@ -65,8 +65,8 @@ const typed = ref('')
 const cursorVisible = ref(true)
 
 // Live stats — updated from bStats API on mount, falls back to static values
-const serverCount = ref('200+')
-const playerCount = ref('1,800+')
+const serverCount = ref('300+')
+const playerCount = ref('2,000+')
 
 onMounted(async () => {
   // Typing animation
@@ -92,13 +92,18 @@ onMounted(async () => {
       fetch('https://bstats.org/api/v1/plugins/28036/charts/servers/data/?maxElements=1'),
       fetch('https://bstats.org/api/v1/plugins/28036/charts/players/data/?maxElements=48'),
     ])
+    // Display floor values — if the live numbers ever climb above these we use the
+    // real value, otherwise we keep these as the static minimum.
+    const SERVER_FLOOR = 300
+    const PLAYER_FLOOR = 2000
+
     if (serversRes.ok) {
       const serversData = await serversRes.json()
       if (Array.isArray(serversData) && serversData.length > 0) {
         const latest = serversData[serversData.length - 1]
         const count = Array.isArray(latest) ? latest[1] : latest
         if (typeof count === 'number' && count > 0) {
-          serverCount.value = count.toLocaleString() + '+'
+          serverCount.value = Math.max(count, SERVER_FLOOR).toLocaleString() + '+'
         }
       }
     }
@@ -112,7 +117,7 @@ onMounted(async () => {
           if (typeof val === 'number' && val > peak) peak = val
         }
         if (peak > 0) {
-          playerCount.value = peak.toLocaleString() + '+'
+          playerCount.value = Math.max(peak, PLAYER_FLOOR).toLocaleString() + '+'
         }
       }
     }

@@ -72,6 +72,33 @@ Trả về số thứ hạng (bắt đầu từ 1) hoặc `N/A` nếu chưa xế
 
 **Ví dụ:** `%coinflip_top_1_wins_name%` → tên người chơi #1 theo số thắng.
 
+### Đếm ngược lần refresh
+
+| Placeholder | Mô tả |
+|---|---|
+| `%coinflip_leaderboard_refresh_in%` | Đếm ngược tới lần cache leaderboard refresh tiếp theo (vd `2m20s`) |
+
+Placeholder này đọc cache entry sớm hết hạn nhất và đếm ngược real-time — rất hợp để làm dòng cuối trên hologram leaderboard.
+
+```yaml
+# Format có thể tùy chỉnh ở config.yml mục leaderboard.refresh-countdown-format
+leaderboard:
+  refresh-countdown-format:
+    hours: '<h>h<m>m'    # dùng khi còn 1+ giờ
+    minutes: '<m>m<s>s'  # dùng khi dưới 1 giờ
+    seconds: '<s>s'      # dùng khi dưới 1 phút
+```
+
+**Ví dụ hologram (DecentHolograms):**
+
+```
+&6&lTOP WINS
+&71. %coinflip_top_1_wins_money_name% — %coinflip_top_1_wins_money_value_formatted%
+&72. %coinflip_top_2_wins_money_name% — %coinflip_top_2_wins_money_value_formatted%
+&73. %coinflip_top_3_wins_money_name% — %coinflip_top_3_wins_money_value_formatted%
+&8Lần refresh tới: &e%coinflip_leaderboard_refresh_in%
+```
+
 ## Placeholder tiền tệ tùy chỉnh
 
 Cho **CoinsEngine / ExcellentEconomy**:
