@@ -12,6 +12,11 @@ All commands use `/coinflip` or the alias `/cf`.
 | `/coinflip create <currency> <amount>` | Create a new coinflip game |
 | `/coinflip create <currency> <amount> bot` | Start a game against the server bot |
 | `/coinflip delete` | Cancel your active coinflip game |
+| `/coinflip invite <player>` | Invite a specific player with clickable Accept/Deny in chat |
+| `/coinflip uninvite <player>` | Remove a player from your invite list |
+| `/coinflip accept [id]` | Accept a coinflip invite (id optional if you have one pending) |
+| `/coinflip deny [id]` | Deny a coinflip invite |
+| `/coinflip private [on\|off]` | Toggle invite-only mode on your coinflip |
 | `/coinflip history` | View your personal game history |
 | `/cf settings` | Open player notification settings |
 | `/cf leaderboard` | View the top players leaderboard |

@@ -23,6 +23,9 @@ Each `/cf` subcommand has its own permission node. All default to `true`, so exi
 | `ultracoinflip.command.settings` | `/cf settings` | `true` |
 | `ultracoinflip.command.stats` | `/cf stats` | `true` |
 | `ultracoinflip.command.help` | `/cf help` | `true` |
+| `ultracoinflip.command.invite` | `/cf invite` and `/cf uninvite` | `true` |
+| `ultracoinflip.command.accept` | `/cf accept` and `/cf deny` | `true` |
+| `ultracoinflip.command.private` | `/cf private` | `true` |
 
 **Example** — hide the leaderboard from regular players:
 

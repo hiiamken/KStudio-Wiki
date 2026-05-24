@@ -84,6 +84,7 @@ const ultracoinflipSidebar_en = [
     text: 'Features',
     items: [
       { text: 'Play with Bot', link: '/ultracoinflip/guide/bot-game' },
+      { text: 'Private Coinflips & Invites', link: '/ultracoinflip/guide/private-and-invites' },
       { text: 'Tax System', link: '/ultracoinflip/guide/tax' },
       { text: 'Betting Limits', link: '/ultracoinflip/guide/betting-limits' },
       { text: 'Discord Webhook', link: '/ultracoinflip/guide/discord' },
@@ -179,6 +180,7 @@ const ultracoinflipSidebar_vi = [
     text: 'Tính năng',
     items: [
       { text: 'Chơi với Bot', link: '/vi/ultracoinflip/guide/bot-game' },
+      { text: 'Coinflip Riêng Tư & Mời', link: '/vi/ultracoinflip/guide/private-and-invites' },
       { text: 'Hệ thống thuế', link: '/vi/ultracoinflip/guide/tax' },
       { text: 'Giới hạn cược', link: '/vi/ultracoinflip/guide/betting-limits' },
       { text: 'Discord Webhook', link: '/vi/ultracoinflip/guide/discord' },

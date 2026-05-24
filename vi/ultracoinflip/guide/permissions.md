@@ -23,6 +23,9 @@ Mỗi subcommand `/cf` có node quyền riêng. Tất cả mặc định `true`,
 | `ultracoinflip.command.settings` | `/cf settings` | `true` |
 | `ultracoinflip.command.stats` | `/cf stats` | `true` |
 | `ultracoinflip.command.help` | `/cf help` | `true` |
+| `ultracoinflip.command.invite` | `/cf invite` và `/cf uninvite` | `true` |
+| `ultracoinflip.command.accept` | `/cf accept` và `/cf deny` | `true` |
+| `ultracoinflip.command.private` | `/cf private` | `true` |
 
 **Ví dụ** — ẩn leaderboard khỏi player thường:
 

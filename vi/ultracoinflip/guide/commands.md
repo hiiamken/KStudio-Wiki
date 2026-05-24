@@ -12,6 +12,11 @@ Tất cả lệnh dùng `/coinflip` hoặc alias `/cf`.
 | `/coinflip create <currency> <amount>` | Tạo trò chơi coinflip mới |
 | `/coinflip create <currency> <amount> bot` | Chơi với bot máy chủ |
 | `/coinflip delete` | Hủy trò chơi đang mở của bạn |
+| `/coinflip invite <player>` | Mời người chơi cụ thể với nút Chấp Nhận/Từ Chối clickable trong chat |
+| `/coinflip uninvite <player>` | Xóa người chơi khỏi danh sách mời |
+| `/coinflip accept [id]` | Chấp nhận lời mời coinflip (id không bắt buộc nếu chỉ có 1 lời mời) |
+| `/coinflip deny [id]` | Từ chối lời mời coinflip |
+| `/coinflip private [on\|off]` | Bật/tắt chế độ private (chỉ người được mời mới vào được) |
 | `/coinflip history` | Xem lịch sử trò chơi |
 | `/cf settings` | Mở cài đặt thông báo cá nhân |
 | `/cf leaderboard` | Xem bảng xếp hạng người chơi |
