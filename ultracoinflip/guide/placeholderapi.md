@@ -61,6 +61,8 @@ Get a player's rank position in any leaderboard filter:
 
 Returns the player's 1-based rank number, or the configured "not ranked" text (default: `N/A`).
 
+You can add a period keyword too, e.g. `%coinflip_position_wins_monthly%` for this month's win rank. See [Time Periods](#time-periods) below.
+
 ## Leaderboard
 
 Use these placeholders to display a top-players list.
@@ -68,10 +70,12 @@ Use these placeholders to display a top-players list.
 ```
 %coinflip_top_<rank>_<filter>_<type>%
 %coinflip_top_<rank>_<filter>_<currency>_<type>%
+%coinflip_top_<rank>_<filter>_<period>_<currency>_<type>%
 ```
 
 - `<rank>` — Position (1–15)
 - `<filter>` — `wins`, `profit`, `largest-win`, `worst-profit`, `winstreak`, or `losses`
+- `<period>` — Optional: `daily`, `weekly`, `monthly`, `yearly`. Omit for all-time. Goes right after the filter.
 - `<currency>` — Required for profit/largest-win/worst-profit: `money`, `playerpoints`, `tokenmanager`, `beasttokens`
 - `<type>` — `name`, `value`, or `value_formatted`
 
@@ -84,6 +88,21 @@ Use these placeholders to display a top-players list.
 | `%coinflip_top_3_winstreak_value%` | #3 player's winstreak |
 | `%coinflip_top_5_largest-win_playerpoints_value_formatted%` | #5 largest PlayerPoints win (formatted) |
 | `%coinflip_top_1_losses_name%` | Name of #1 player by total losses |
+
+### Time Periods
+
+Add a period keyword right after the filter to rank by **daily**, **weekly**, **monthly**, or **yearly** results instead of all-time. Leave it out for the all-time board.
+
+| Placeholder | Returns |
+|---|---|
+| `%coinflip_top_1_wins_monthly_name%` | Top wins **this month** |
+| `%coinflip_top_1_wins_monthly_value%` | That player's win count this month |
+| `%coinflip_top_1_wins_daily_name%` | Top wins **today** |
+| `%coinflip_top_1_profit_monthly_money_value%` | Top money profit this month |
+
+- Weeks start on **Monday**, months/years on the 1st, in the server's local time.
+- Timed boards count **player-vs-player** games only (bot games are excluded).
+- `winstreak` has no period — it is always the current streak.
 
 ### Refresh Countdown
 

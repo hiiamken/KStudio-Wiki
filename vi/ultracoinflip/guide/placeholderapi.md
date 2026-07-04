@@ -58,19 +58,38 @@ Tương tự cho `playerpoints` (viết tắt `pp`), `tokenmanager` (`tm`), `bea
 
 Trả về số thứ hạng (bắt đầu từ 1) hoặc `N/A` nếu chưa xếp hạng.
 
+Có thể thêm mốc thời gian, ví dụ `%coinflip_position_wins_monthly%` để lấy thứ hạng thắng trong tháng này. Xem [Theo mốc thời gian](#theo-moc-thoi-gian) bên dưới.
+
 ## Bảng xếp hạng
 
 ```
 %coinflip_top_<rank>_<filter>_<type>%
 %coinflip_top_<rank>_<filter>_<currency>_<type>%
+%coinflip_top_<rank>_<filter>_<period>_<currency>_<type>%
 ```
 
 - `<rank>` — Vị trí (1–15)
 - `<filter>` — `wins`, `profit`, `largest-win`, `worst-profit`, `winstreak`, hoặc `losses`
+- `<period>` — Tùy chọn: `daily`, `weekly`, `monthly`, `yearly`. Bỏ trống = toàn thời gian. Đặt ngay sau filter.
 - `<currency>` — Bắt buộc cho profit/largest-win/worst-profit: `money`, `playerpoints`, `tokenmanager`, `beasttokens`
 - `<type>` — `name`, `value`, hoặc `value_formatted`
 
 **Ví dụ:** `%coinflip_top_1_wins_name%` → tên người chơi #1 theo số thắng.
+
+### Theo mốc thời gian
+
+Thêm từ khóa mốc thời gian ngay sau filter để xếp hạng theo **ngày**, **tuần**, **tháng** hoặc **năm** thay vì toàn thời gian. Bỏ trống thì lấy bảng toàn thời gian.
+
+| Placeholder | Trả về |
+|---|---|
+| `%coinflip_top_1_wins_monthly_name%` | Top thắng **trong tháng này** |
+| `%coinflip_top_1_wins_monthly_value%` | Số thắng trong tháng của người đó |
+| `%coinflip_top_1_wins_daily_name%` | Top thắng **hôm nay** |
+| `%coinflip_top_1_profit_monthly_money_value%` | Top lợi nhuận money trong tháng |
+
+- Tuần bắt đầu từ **thứ Hai**, tháng/năm từ ngày 1, theo giờ máy chủ.
+- Bảng theo mốc chỉ tính ván **người đấu người** (không tính ván với bot).
+- `winstreak` không có mốc thời gian — luôn là chuỗi thắng hiện tại.
 
 ### Đếm ngược lần refresh
 
