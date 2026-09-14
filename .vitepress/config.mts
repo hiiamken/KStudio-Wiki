@@ -85,8 +85,10 @@ const ultracoinflipSidebar_en = [
     items: [
       { text: 'Play with Bot', link: '/ultracoinflip/guide/bot-game' },
       { text: 'Private Coinflips & Invites', link: '/ultracoinflip/guide/private-and-invites' },
+      { text: 'Coinflip Expiry & Restarts', link: '/ultracoinflip/guide/expiry' },
       { text: 'Tax System', link: '/ultracoinflip/guide/tax' },
       { text: 'Betting Limits', link: '/ultracoinflip/guide/betting-limits' },
+      { text: 'Earnings & Loss Limits', link: '/ultracoinflip/guide/earnings-limits' },
       { text: 'Discord Webhook', link: '/ultracoinflip/guide/discord' },
       { text: 'Security & Anti-Exploit', link: '/ultracoinflip/guide/security' },
     ],
@@ -96,6 +98,13 @@ const ultracoinflipSidebar_en = [
     items: [
       { text: 'config.yml', link: '/ultracoinflip/config/config-yml' },
       { text: 'Currency Files', link: '/ultracoinflip/config/currencies' },
+      { text: 'Menus & Icons', link: '/ultracoinflip/guide/menus' },
+    ],
+  },
+  {
+    text: 'Developers',
+    items: [
+      { text: 'Developer API', link: '/ultracoinflip/guide/developer-api' },
     ],
   },
 ]
@@ -181,8 +190,10 @@ const ultracoinflipSidebar_vi = [
     items: [
       { text: 'Chơi với Bot', link: '/vi/ultracoinflip/guide/bot-game' },
       { text: 'Coinflip Riêng Tư & Mời', link: '/vi/ultracoinflip/guide/private-and-invites' },
+      { text: 'Hết hạn & Khởi động lại', link: '/vi/ultracoinflip/guide/expiry' },
       { text: 'Hệ thống thuế', link: '/vi/ultracoinflip/guide/tax' },
       { text: 'Giới hạn cược', link: '/vi/ultracoinflip/guide/betting-limits' },
+      { text: 'Giới hạn thắng thua', link: '/vi/ultracoinflip/guide/earnings-limits' },
       { text: 'Discord Webhook', link: '/vi/ultracoinflip/guide/discord' },
       { text: 'Bảo mật & Chống gian lận', link: '/vi/ultracoinflip/guide/security' },
     ],
@@ -192,6 +203,13 @@ const ultracoinflipSidebar_vi = [
     items: [
       { text: 'config.yml', link: '/vi/ultracoinflip/config/config-yml' },
       { text: 'Currency Files', link: '/vi/ultracoinflip/config/currencies' },
+      { text: 'Menu & Icon', link: '/vi/ultracoinflip/guide/menus' },
+    ],
+  },
+  {
+    text: 'Dành cho Developer',
+    items: [
+      { text: 'API cho Developer', link: '/vi/ultracoinflip/guide/developer-api' },
     ],
   },
 ]

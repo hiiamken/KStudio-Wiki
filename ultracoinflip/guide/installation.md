@@ -2,18 +2,21 @@
 
 ## Step 1 — Download the plugin
 
-Download the latest `UltraCoinFlip.jar` from [Modrinth](https://modrinth.com) or [SpigotMC](https://www.spigotmc.org).
+Download the latest `UltraCoinFlip.jar` from [Modrinth](https://modrinth.com/plugin/ultracoinflip) or [SpigotMC](https://www.spigotmc.org/resources/%E2%AD%90-ultracoinflip-1-8-x-1-21-11-folia-support.130124/).
 
 ## Step 2 — Install Vault + Economy plugin
 
-UltraCoinFlip **requires Vault** and at least one Vault-compatible economy plugin:
+UltraCoinFlip **requires Vault**, plus a Vault-compatible economy plugin for the default `money` currency:
 
 - **EssentialsX** (most common)
 - **CMI**
-- **AureliumSkills Economy**
 - Any plugin that registers with Vault
 
 Install both `Vault.jar` and your chosen economy plugin in the `plugins/` folder.
+
+::: tip
+The server won't load UltraCoinFlip without Vault. If your economy plugin hooks into Vault after UltraCoinFlip has started, the plugin picks it up automatically.
+:::
 
 ## Step 3 — Drop the jar
 
@@ -25,19 +28,25 @@ Start or restart your server. UltraCoinFlip will generate its configuration file
 
 ```
 plugins/UltraCoinFlip/
-  config.yml          ← main configuration
-  messages_en.yml     ← English language file
+  config.yml              ← main configuration
+  sounds.yml              ← sound settings
+  ultracoinflip.db        ← SQLite database (default)
+  langs/
+    messages_en.yml       ← English language file
+    ...                   ← 16 more languages
   currencies/
-    vault.yml         ← Vault currency config
-    playerpoints.yml  ← PlayerPoints config (if installed)
-    coinsengine.yml   ← ExcellentEconomy / CoinsEngine config
-    ...
-  gui/                ← GUI layout files
+    vault.yml             ← Vault currency config
+    playerpoints.yml      ← PlayerPoints config
+    tokenmanager.yml      ← TokenManager config
+    beasttokens.yml       ← BeastTokens config
+    coinsengine.yml       ← ExcellentEconomy / CoinsEngine config
+    customplaceholder.yml ← custom PlaceholderAPI currencies
+  gui/                    ← menu layout files (mainmenu.yml, create.yml, flipping.yml, ...)
 ```
 
 ## Step 5 — Configure
 
-Open `config.yml` to set up your server's preferences. At minimum, make sure the `default-currency` matches the currency you want players to use.
+Open `config.yml` to set up your server's preferences, such as `language`. Only the Vault currency is enabled out of the box — to use another currency, set `enabled: true` in its file under `currencies/`. `default-currency` (default `auto`) decides which currency `/cf create <amount>` uses when players leave the currency out.
 
 ::: tip
 Use `/coinflip reload` to reload all configs without restarting the server.
@@ -45,7 +54,7 @@ Use `/coinflip reload` to reload all configs without restarting the server.
 
 ## Updating from an older version
 
-Simply replace the old `UltraCoinFlip.jar` with the new one and restart the server. Your existing configuration files are preserved automatically. Check the update.txt included with the plugin download for any config changes between versions.
+Simply replace the old `UltraCoinFlip.jar` with the new one and restart the server. Your existing configuration files are preserved automatically, and new options use their default values until you change them. Check the changelog on the download page for any config changes between versions.
 
 ::: warning
 Always make a backup of your `plugins/UltraCoinFlip/` folder before updating.

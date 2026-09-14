@@ -7,7 +7,7 @@ ExcellentEconomy (formerly CoinsEngine) provides a multi-currency economy system
 CoinsEngine was **renamed to ExcellentEconomy** by the developer. UltraCoinFlip supports both:
 
 - **ExcellentEconomy** (new) — detected and used automatically
-- **CoinsEngine** (legacy) — still works with a migration warning in console
+- **CoinsEngine** (legacy) — still works. Version 2.7.0 and newer is fully supported; older versions print a console warning asking you to update
 
 Both use the same **`coinsengine.yml`** config file — no changes needed when transitioning.
 
@@ -19,12 +19,12 @@ Install one of:
 
 ## Config File: `coinsengine.yml`
 
-Each currency defined in ExcellentEconomy gets its own entry:
+Each currency defined in ExcellentEconomy gets its own entry. The default file ships with one example currency, `coins`, turned off:
 
 ```yaml
 currencies:
   coins:
-    enabled: true
+    enabled: false                 # set to true to use it
     unit: "Coins"
     display-name: "Coins"
     syntax-command: "coin"         # /cf create coin 1000
@@ -39,7 +39,13 @@ currencies:
     dynamic-tax-enabled: false
 ```
 
-The key (`coins`, `gems`, etc.) must **exactly match** the currency ID in ExcellentEconomy.
+The key (`coins`, `gems`, etc.) must **exactly match** the currency ID in ExcellentEconomy and can't contain spaces, colons or dots. Each currency can also have its own `tax-rate-config`, `restrictions`, `messages` and `event-commands` — see [Currency Files](/ultracoinflip/config/currencies).
+
+After editing, run `/cf reload`. Players can use the `syntax-command` keyword or the currency ID itself, e.g. `/cf create coins 1000`.
+
+::: warning
+If a currency is enabled but its ID doesn't exist in ExcellentEconomy, the console shows an error and players who try to use it get an error message.
+:::
 
 ## Adding Multiple Currencies
 
@@ -58,6 +64,17 @@ currencies:
     syntax-command: "gem"
     # ...
 ```
+
+Currencies you add here are kept when UltraCoinFlip updates. If an entry is missing basic settings such as `min-bid` or `tax-rate`, they are added with default values.
+
+## Placeholders
+
+| Placeholder | Description |
+|---|---|
+| `%coinflip_coinsengine_<id>_unit%` | Currency unit |
+| `%coinflip_coinsengine_<id>_display%` | Currency display name |
+
+In the game list and history GUI configs, use `<coinsengine_<id>_unit>` or `<coinsengine_<id>_display>`.
 
 ## Migration from CoinsEngine
 

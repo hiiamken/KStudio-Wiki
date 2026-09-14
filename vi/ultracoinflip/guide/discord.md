@@ -10,8 +10,12 @@ UltraCoinFlip có thể tự động gửi kết quả và thông báo tạo gam
 
 ```yaml
 discord:
-  enabled: true
-  webhook-url: "https://discord.com/api/webhooks/URL_CUA_BAN"
+  webhook:
+    enabled: true
+    url: "https://discord.com/api/webhooks/YOUR_WEBHOOK_ID/YOUR_WEBHOOK_TOKEN"
+    username: "UltraCoinFlip"   # để trống để dùng tên mặc định của Discord
+    avatar: ""                  # URL ảnh, để trống để dùng avatar mặc định của Discord
+    min-amount: 0               # chỉ gửi game có tiền cược từ mức này trở lên
 ```
 
 ::: tip URL Discord được hỗ trợ
@@ -20,47 +24,101 @@ Tất cả biến thể URL Discord đều hoạt động: `discord.com`, `canar
 
 ## Webhook kết quả game
 
-Gửi embed Discord khi một trò chơi kết thúc:
+Gửi embed Discord khi một trò chơi kết thúc. Kết quả được gửi khi `discord.webhook.enabled` là `true`, dùng nội dung trong `discord.message`:
 
 ```yaml
 discord:
-  game-finished:
-    enabled: true
-    min-amount: 10000
+  message:
+    content: ""                 # văn bản thường phía trên embed (để trống = chỉ gửi embed)
     embed:
-      color: "#FFD700"
-      title: "Kết quả CoinFlip"
+      enabled: true
+      title: "Coin Flip Result"
+      description: ""
+      color:                    # màu viền embed (RGB)
+        r: 255
+        g: 165
+        b: 0
+      thumbnail: ""             # URL ảnh (tùy chọn)
+      fields:
+        - name: "Winner"
+          value: "**%winner%**"
+          inline: true
+        - name: "Loser"
+          value: "%loser%"
+          inline: true
+        - name: "Bet Amount"
+          value: "%amount% %symbol%"
+          inline: true
+        - name: "Winnings"
+          value: "**%taxed_amount% %symbol%**"
+          inline: false
+      footer:
+        text: "UltraCoinFlip"
+        icon: ""
+      timestamp: true
 ```
+
+| Placeholder | Mô tả |
+|---|---|
+| `%winner%` | Tên người thắng |
+| `%loser%` | Tên người thua |
+| `%amount%` | Số tiền cược (trước thuế) |
+| `%taxed_amount%` | Số tiền người thắng nhận được (sau thuế) |
+| `%currency%` | Tên hiển thị của loại tiền |
+| `%symbol%` | Ký hiệu loại tiền |
+
+Ván chơi với bot cũng được gửi khi `house.notifications.enabled` là `true` (mặc định). Tên bot được dùng cho `%winner%` hoặc `%loser%`, và `%taxed_amount%` bằng `0` khi bot thắng.
 
 ## Webhook tạo game
 
-Gửi thông báo khi người chơi tạo game mới:
+Gửi thông báo khi người chơi tạo game mới. Mặc định tính năng này tắt, dùng chung URL webhook, tên, avatar và `min-amount`, và chỉ gửi khi `discord.webhook.enabled` là `true`:
 
 ```yaml
 discord:
   game-created:
     enabled: true
-    min-amount: 5000
-    embed:
-      color: "#3498db"
-      title: "Game CoinFlip mới"
+    message:
+      content: ""
+      embed:
+        enabled: true
+        title: "New Coin Flip Created"
+        description: ""
+        color:
+          r: 100
+          g: 200
+          b: 255
+        thumbnail: ""
+        fields:
+          - name: "Player"
+            value: "**%player%**"
+            inline: true
+          - name: "Amount"
+            value: "%amount% %symbol%"
+            inline: true
+        footer:
+          text: "UltraCoinFlip"
+          icon: ""
+        timestamp: true
 ```
+
+Placeholder có sẵn: `%player%`, `%amount%`, `%currency%`, `%symbol%`. Ván chơi với bot không gửi thông báo này.
 
 ## Hỗ trợ PlaceholderAPI
 
-Tất cả tin nhắn webhook hỗ trợ **PlaceholderAPI placeholder**, ví dụ hiển thị rank:
+Nội dung webhook (content, title, description, fields và footer) hỗ trợ **PlaceholderAPI placeholder**. Trong tin nhắn kết quả, placeholder được lấy theo người thắng; trong tin nhắn tạo game, theo người tạo game. Ví dụ hiển thị rank:
 
 ```yaml
-description: "%luckperms_prefix% **%winner%** thắng %amount% %currency%!"
+description: "%luckperms_prefix% **%winner%** thắng %taxed_amount% %symbol%!"
 ```
+
+Mã màu Minecraft (`&b`, màu hex và thẻ MiniMessage) được xóa trước khi gửi, nên prefix hiển thị dạng chữ thường trên Discord.
 
 ## Nội dung được gửi
 
-Mỗi tin nhắn bao gồm:
-- Tên người thắng và thua
-- Loại tiền và số tiền cược
-- Mặt thắng (Heads / Tails)
-- Thuế (nếu có)
+Với embed mặc định, mỗi tin nhắn kết quả bao gồm:
+- Tên người thắng và người thua
+- Số tiền cược và ký hiệu loại tiền
+- Tiền thắng sau thuế
 - Thời gian
 
 ## Lệnh kiểm tra
@@ -71,12 +129,12 @@ Kiểm tra webhook hoạt động mà không cần game thật:
 /cf webhook test
 ```
 
-Yêu cầu quyền `ultracoinflip.admin`.
+Lệnh này kiểm tra webhook đã bật và URL hợp lệ, gửi một embed thử cố định tới webhook, rồi báo trong chat là thành công hay lỗi. Yêu cầu quyền `ultracoinflip.admin` và dùng được cả từ console.
 
 ## Lọc thông báo
 
-Dùng `min-amount` để chỉ gửi các trò chơi lớn, tránh spam kênh Discord.
+Dùng `discord.webhook.min-amount` để chỉ gửi các trò chơi lớn, tránh spam kênh Discord. Giá trị này áp dụng cho cả tin nhắn kết quả và tin nhắn tạo game.
 
 ::: warning
-Không chia sẻ URL webhook công khai — bất kỳ ai có URL đó đều có thể đăng lên kênh của bạn.
+Không chia sẻ URL webhook công khai — bất kỳ ai có URL đó đều có thể đăng lên kênh của bạn. Chỉ để URL trong `config.yml`.
 :::

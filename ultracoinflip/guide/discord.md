@@ -10,8 +10,12 @@ UltraCoinFlip can send game results and game creation notifications to a **Disco
 
 ```yaml
 discord:
-  enabled: true
-  webhook-url: "https://discord.com/api/webhooks/YOUR_WEBHOOK_URL"
+  webhook:
+    enabled: true
+    url: "https://discord.com/api/webhooks/YOUR_WEBHOOK_ID/YOUR_WEBHOOK_TOKEN"
+    username: "UltraCoinFlip"   # leave empty for Discord's default name
+    avatar: ""                  # image URL, leave empty for Discord's default avatar
+    min-amount: 0               # only post games with a bet of at least this amount
 ```
 
 ::: tip Supported Discord URLs
@@ -20,49 +24,101 @@ All Discord URL variants are supported: `discord.com`, `canary.discord.com`, `pt
 
 ## Game Result Webhook
 
-Post a Discord embed whenever a coinflip game finishes:
+Post a Discord embed whenever a coinflip game finishes. Results are sent while `discord.webhook.enabled` is `true`, using the message under `discord.message`:
 
 ```yaml
 discord:
-  game-finished:
-    enabled: true
-    min-amount: 10000      # only post games above this bet amount
+  message:
+    content: ""                 # plain text above the embed (empty = embed only)
     embed:
-      color: "#FFD700"
-      title: "Coinflip Result"
-      description: "**%winner%** won against **%loser%**"
+      enabled: true
+      title: "Coin Flip Result"
+      description: ""
+      color:                    # embed border colour (RGB)
+        r: 255
+        g: 165
+        b: 0
+      thumbnail: ""             # image URL (optional)
+      fields:
+        - name: "Winner"
+          value: "**%winner%**"
+          inline: true
+        - name: "Loser"
+          value: "%loser%"
+          inline: true
+        - name: "Bet Amount"
+          value: "%amount% %symbol%"
+          inline: true
+        - name: "Winnings"
+          value: "**%taxed_amount% %symbol%**"
+          inline: false
+      footer:
+        text: "UltraCoinFlip"
+        icon: ""
+      timestamp: true
 ```
+
+| Placeholder | Description |
+|---|---|
+| `%winner%` | Name of the winner |
+| `%loser%` | Name of the loser |
+| `%amount%` | Bet amount (before tax) |
+| `%taxed_amount%` | Amount the winner received (after tax) |
+| `%currency%` | Currency display name |
+| `%symbol%` | Currency symbol |
+
+Bot games are posted too while `house.notifications.enabled` is `true` (the default). The bot's name is used for `%winner%` or `%loser%`, and `%taxed_amount%` is `0` when the bot wins.
 
 ## Game Created Webhook
 
-Post a notification whenever a player creates a new coinflip game:
+Post a notification whenever a player creates a new coinflip game. It's off by default, uses the same webhook URL, name, avatar and `min-amount`, and only sends while `discord.webhook.enabled` is `true`:
 
 ```yaml
 discord:
   game-created:
     enabled: true
-    min-amount: 5000
-    embed:
-      color: "#3498db"
-      title: "New Coinflip Game"
-      description: "**%player%** created a %amount% %currency% coinflip!"
+    message:
+      content: ""
+      embed:
+        enabled: true
+        title: "New Coin Flip Created"
+        description: ""
+        color:
+          r: 100
+          g: 200
+          b: 255
+        thumbnail: ""
+        fields:
+          - name: "Player"
+            value: "**%player%**"
+            inline: true
+          - name: "Amount"
+            value: "%amount% %symbol%"
+            inline: true
+        footer:
+          text: "UltraCoinFlip"
+          icon: ""
+        timestamp: true
 ```
+
+Available placeholders: `%player%`, `%amount%`, `%currency%`, `%symbol%`. Bot games don't send this notification.
 
 ## PlaceholderAPI Support
 
-All webhook messages support **PlaceholderAPI placeholders**. For example, you can show player ranks:
+Webhook text (content, title, description, fields and footer) supports **PlaceholderAPI placeholders**. In result messages they're filled in for the winner, in game created messages for the player who created the game. For example, you can show player ranks:
 
 ```yaml
-description: "%luckperms_prefix% **%winner%** won %amount% %currency%!"
+description: "%luckperms_prefix% **%winner%** won %taxed_amount% %symbol%!"
 ```
+
+Minecraft colour codes (`&b`, hex colours and MiniMessage tags) are removed before sending, so prefixes show as plain text in Discord.
 
 ## What gets posted
 
-Each game result message includes:
+With the default embed, each game result message includes:
 - Winner and loser names
-- Currency and bet amount
-- Winning side (Heads / Tails)
-- Tax amount (if applicable)
+- Bet amount and currency symbol
+- Winnings after tax
 - Timestamp
 
 ## Test Command
@@ -73,11 +129,11 @@ Verify your webhook is working without needing a live game:
 /cf webhook test
 ```
 
-This sends a test embed to your configured webhook URL. Requires `ultracoinflip.admin` permission.
+This checks that the webhook is enabled and the URL is valid, sends a fixed test embed to it, and tells you in chat whether it worked. Requires `ultracoinflip.admin` permission and also works from the console.
 
 ## Filtering
 
-Use `min-amount` to only post high-stakes games and avoid spam in your Discord channel.
+Use `discord.webhook.min-amount` to only post high-stakes games and avoid spam in your Discord channel. It applies to both result and game created messages.
 
 ::: warning
 Never share your webhook URL publicly — anyone with it can post to your channel. Keep it in `config.yml` only.

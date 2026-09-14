@@ -12,22 +12,35 @@
 
 ## UltraCoinFlip là gì?
 
-UltraCoinFlip là plugin cờ bạc coinflip cao cấp cho Minecraft, cho phép người chơi tạo và tham gia trò chơi, đặt cược tiền tệ trong game. Mỗi lần tung đồng xu sử dụng **thuật toán ngẫu nhiên an toàn về mật mã** — công bằng hoàn toàn.
+UltraCoinFlip là plugin cờ bạc coinflip cao cấp cho Minecraft, cho phép người chơi tạo và tham gia trò chơi, đặt cược tiền tệ trong game với nhau. Mỗi lần tung đồng xu sử dụng **thuật toán ngẫu nhiên an toàn về mật mã** — tỉ lệ 50/50 công bằng, server không thể can thiệp.
 
 Phù hợp cho server **economy, survival, skyblock, factions, prison** và bất kỳ server nào muốn tăng tương tác.
 
 ## Tính năng nổi bật
 
-- **Hỗ trợ nhiều loại tiền tệ** — Vault, PlayerPoints, TokenManager, BeastTokens, ExcellentEconomy, CoinsEngine
-- **Cơ sở dữ liệu** — SQLite (mặc định) và MySQL với HikariCP
-- **Bảng xếp hạng** — Top 15 người chơi, lọc theo wins / profit / largest win / winstreak
-- **Chơi với Bot** — Người chơi có thể đấu với bot máy chủ
-- **Hệ thống thuế** — Tỷ lệ thuế theo bậc cho từng loại tiền
-- **Giới hạn cược** — Giới hạn ngày/tuần mỗi người chơi
-- **Discord webhook** — Gửi kết quả trò chơi lên Discord
-- **Bảo mật** — Chống gian lận, hoàn tiền tự động, hệ thống backup
+- **[Hỗ trợ nhiều loại tiền tệ](/vi/ultracoinflip/guide/currencies)** — Vault, PlayerPoints, TokenManager, BeastTokens, ExcellentEconomy, CoinsEngine và không giới hạn tiền tệ tùy chỉnh qua PlaceholderAPI
+- **Cơ sở dữ liệu** — SQLite (mặc định) và MySQL với connection pool HikariCP
+- **Bảng xếp hạng** — Top người chơi (mặc định 16 người), lọc theo wins / profit / largest win / worst profit / winstreak
+- **[Chơi với Bot](/vi/ultracoinflip/guide/bot-game)** — Người chơi có thể đấu với bot của server
+- **[Coinflip riêng tư & lời mời](/vi/ultracoinflip/guide/private-and-invites)** — Game chỉ dành cho người được mời, kèm nút Chấp nhận/Từ chối bấm được ngay trong chat
+- **Nhiều coinflip cùng lúc** — Cho người chơi mở nhiều game một lúc, giới hạn cao hơn theo quyền
+- **Chọn sấp/ngửa** — Tùy chọn cho người chơi chọn một mặt trước khi game được tạo
+- **[Hệ thống thuế](/vi/ultracoinflip/guide/tax)** — Thuế cố định hoặc theo bậc, cấu hình riêng cho từng loại tiền
+- **[Giới hạn cược](/vi/ultracoinflip/guide/betting-limits)** — Giới hạn ngày/tuần cho mỗi người chơi, theo từng loại tiền
+- **[Giới hạn thắng & thua](/vi/ultracoinflip/guide/earnings-limits)** — Giới hạn số tiền một người chơi được thắng hoặc thua theo ngày, tuần, tháng hoặc khung thời gian trượt, có cảnh báo và mức riêng cho từng nhóm
+- **[Coinflip hết hạn](/vi/ultracoinflip/guide/expiry)** — Tự hoàn tiền các coinflip đang chờ mà không ai vào sau một khoảng thời gian, và giữ game đang chờ qua các lần restart
+- **[Menu hiện đại](/vi/ultracoinflip/guide/menus)** — Menu dialog dạng pop-up trên Paper 1.21.7+, menu Bedrock gốc cho người chơi Geyser/Floodgate, icon từ HeadDatabase và item-model
+- **[Discord webhook](/vi/ultracoinflip/guide/discord)** — Gửi kết quả trò chơi và thông báo tạo game lên Discord, hỗ trợ PlaceholderAPI
+- **Làm tròn số nguyên** — Tùy chọn làm tròn tiền thắng cho các loại tiền chỉ dùng số nguyên (token, shard,...)
+- **Lệnh sự kiện** — Chạy lệnh console khi tạo game, bắt đầu, thắng, thua hoặc hủy
+- **GUI tùy chỉnh hoàn toàn** — Bố cục, vật phẩm, màu sắc, 4 kiểu animation (default, slot-machine, circular, vertical)
+- **Cài đặt cá nhân** — Người chơi tự chọn nhận những tin nhắn, title, action bar, boss bar và âm thanh nào
+- **Giới hạn tiền tệ** — Khóa loại tiền theo world hoặc theo quyền
+- **[Bảo mật](/vi/ultracoinflip/guide/security)** — Chống gian lận, hoàn tiền tự động, hệ thống backup
+- **[60+ placeholder PlaceholderAPI](/vi/ultracoinflip/guide/placeholderapi)** — Thống kê, theo dõi lợi nhuận, bảng xếp hạng, thứ hạng người chơi, giới hạn
+- **[Developer API](/vi/ultracoinflip/guide/developer-api)** — Sự kiện và hàm để các plugin khác kết nối vào
 - **Hỗ trợ Folia** — Tương thích hoàn toàn với Paper Folia
-- **17 ngôn ngữ** — Bao gồm Tiếng Việt 🇻🇳
+- **17 ngôn ngữ** — EN, VI, FR, DE, NL, RU, ZH-CN, ZH-TW, ES, AR, IT, LT, PT-BR, PL, TR, KO, JA
 
 ## Bắt đầu nhanh
 
@@ -44,20 +57,22 @@ Chạy `/coinflip reload` sau khi chỉnh sửa bất kỳ file config nào đ�
 
 | Yêu cầu | Phiên bản |
 |---|---|
-| Minecraft Server | 1.8.x – 1.21.x (Spigot / Paper / Folia) |
-| Java | 8 trở lên |
+| Minecraft Server | 1.8.8 – 26.x (Spigot / Paper / Folia) |
+| Java | 8 trở lên (theo yêu cầu của phiên bản server) |
 | Vault | Bất kỳ phiên bản mới nào |
-| Plugin kinh tế | EssentialsX, CMI, hoặc bất kỳ plugin tương thích Vault |
+| Plugin kinh tế | EssentialsX, CMI, hoặc bất kỳ plugin tương thích Vault (cho loại tiền `money`) |
 
 ## Phụ thuộc tùy chọn
 
 | Plugin | Mục đích |
 |---|---|
-| PlaceholderAPI | 40+ placeholder cho scoreboard, hologram,... |
+| PlaceholderAPI | 60+ placeholder cho scoreboard, hologram,... và tiền tệ tùy chỉnh qua PlaceholderAPI |
 | PlayerPoints | Dùng points làm tiền tệ coinflip |
 | TokenManager | Dùng token làm tiền tệ coinflip |
 | BeastTokens | Dùng beast token làm tiền tệ coinflip |
 | ExcellentEconomy | Dùng tiền tệ ExcellentEconomy (trước đây là CoinsEngine) |
+| Floodgate | Menu Bedrock gốc cho người chơi vào qua Geyser |
+| HeadDatabase | Dùng head từ HeadDatabase làm icon trong menu |
 
 ## Thống kê server
 
