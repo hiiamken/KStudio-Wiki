@@ -365,10 +365,8 @@ Fires every time a player who has already reached an [earnings limit](/ultracoin
 | `getPeriod()` | The current `LimitPeriod` |
 | `getCap()` | The player's cap |
 | `getUsed()` | Amount counted this period |
-| `getResetAtEpochMillis()` | Always `0` when UltraCoinFlip fires this event |
+| `getResetAtEpochMillis()` | End of the current period in epoch milliseconds. For rolling periods this is the current time |
 | `getInfo()` | The same data as an `EarningsLimitInfo` |
-
-To get the end of the current period, call `getEarningsLimit(...)` with the same player, currency and type.
 
 ```java
 @EventHandler

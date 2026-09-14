@@ -3,7 +3,7 @@
 The main configuration file located at `plugins/UltraCoinFlip/config.yml`.
 
 ::: tip
-Most changes apply with `/cf reload`. Changes to `database`, `performance`, `bedrock` and `bstats` need a full server restart.
+Most changes apply with `/cf reload`. Changes to `command_aliases`, `database`, `performance`, `bedrock` and `bstats` need a full server restart.
 :::
 
 ## General Settings
@@ -11,11 +11,16 @@ Most changes apply with `/cf reload`. Changes to `database`, `performance`, `bed
 ```yaml
 language: en              # Language file to use (en, vi, fr, nl, ru, zh_cn, zh_tw, es, de, ar, it, lt, pt, pl, tr, ko, ja)
 default-currency: "auto"  # Currency used by /cf create <amount> when no currency is given
+command_aliases:          # Extra names for the /coinflip command
+  - coinflip
+  - cf
 ```
 
 Messages are loaded from `plugins/UltraCoinFlip/langs/messages_<language>.yml`.
 
 `default-currency` takes `auto` or a currency's `syntax-command`, such as `money`, `point` or `coin`. With `auto`, or when the chosen currency is disabled, the first enabled currency in this order is used: Vault, PlayerPoints, TokenManager, BeastTokens, ExcellentEconomy / CoinsEngine, then custom placeholder currencies.
+
+`command_aliases` adds more names for the `/coinflip` command, such as `flip`. `coinflip` and `cf` always work, even if you take them out of the list. Names can only contain letters, digits and underscores.
 
 ## Database
 
@@ -263,6 +268,8 @@ earnings-limit:
     enabled: false              # Warn players as they get close to a cap
     percentages: [50, 75, 90]
     sound: BLOCK_NOTE_BLOCK_BELL
+  auto-tune:
+    multiplier: 3.0             # /cf limit auto-tune suggests caps this many times a typical day
   per-currency:
     vault:                      # vault, playerpoints, tokenmanager, beasttokens or a currency ID
       max-win:                  # Also available: max-loss, max-net-profit, max-volume
@@ -274,7 +281,7 @@ earnings-limit:
 ```
 
 ::: warning
-Vault is called `vault` here but `money` under `betting-limits`.
+Vault is called `vault` here but `money` under `betting-limits`. A `money` block here also works for Vault: limit types enabled in it apply unless the `vault` block enables the same type.
 :::
 
 See [Earnings & Loss Limits](/ultracoinflip/guide/earnings-limits) for every limit type.

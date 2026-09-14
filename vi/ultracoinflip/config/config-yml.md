@@ -3,7 +3,7 @@
 File cấu hình chính tại `plugins/UltraCoinFlip/config.yml`.
 
 ::: tip
-Phần lớn thay đổi có hiệu lực sau khi chạy `/cf reload`. Riêng `database`, `performance`, `bedrock` và `bstats` cần khởi động lại server.
+Phần lớn thay đổi có hiệu lực sau khi chạy `/cf reload`. Riêng `command_aliases`, `database`, `performance`, `bedrock` và `bstats` cần khởi động lại server.
 :::
 
 ## Cài đặt chung
@@ -11,11 +11,16 @@ Phần lớn thay đổi có hiệu lực sau khi chạy `/cf reload`. Riêng `d
 ```yaml
 language: en              # File ngôn ngữ (en, vi, fr, nl, ru, zh_cn, zh_tw, es, de, ar, it, lt, pt, pl, tr, ko, ja)
 default-currency: "auto"  # Tiền tệ dùng cho /cf create <amount> khi không ghi tiền tệ
+command_aliases:          # Tên khác cho lệnh /coinflip
+  - coinflip
+  - cf
 ```
 
 Tin nhắn được lấy từ `plugins/UltraCoinFlip/langs/messages_<language>.yml`.
 
 `default-currency` nhận `auto` hoặc `syntax-command` của một tiền tệ, ví dụ `money`, `point` hay `coin`. Khi để `auto`, hoặc khi tiền tệ đã chọn bị tắt, plugin dùng tiền tệ đầu tiên đang bật theo thứ tự: Vault, PlayerPoints, TokenManager, BeastTokens, ExcellentEconomy / CoinsEngine, rồi đến các tiền tệ placeholder tùy chỉnh.
+
+`command_aliases` thêm tên khác cho lệnh `/coinflip`, ví dụ `flip`. `coinflip` và `cf` luôn dùng được, kể cả khi bạn bỏ chúng khỏi danh sách. Tên chỉ được chứa chữ cái, chữ số và dấu gạch dưới.
 
 ## Cơ sở dữ liệu
 
@@ -263,6 +268,8 @@ earnings-limit:
     enabled: false              # Cảnh báo khi người chơi sắp chạm mức giới hạn
     percentages: [50, 75, 90]
     sound: BLOCK_NOTE_BLOCK_BELL
+  auto-tune:
+    multiplier: 3.0             # /cf limit auto-tune gợi ý hạn mức bằng một ngày điển hình nhân với số này
   per-currency:
     vault:                      # vault, playerpoints, tokenmanager, beasttokens hoặc một ID tiền tệ
       max-win:                  # Ngoài ra còn có: max-loss, max-net-profit, max-volume
@@ -274,7 +281,7 @@ earnings-limit:
 ```
 
 ::: warning
-Ở đây Vault có tên là `vault`, còn trong `betting-limits` là `money`.
+Ở đây Vault có tên là `vault`, còn trong `betting-limits` là `money`. Khối `money` ở đây cũng dùng được cho Vault: loại giới hạn nào được bật trong đó sẽ áp dụng, trừ khi khối `vault` đã bật cùng loại.
 :::
 
 Xem [Giới hạn thắng & thua](/vi/ultracoinflip/guide/earnings-limits) để biết mọi loại giới hạn.

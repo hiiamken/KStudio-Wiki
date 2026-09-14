@@ -120,6 +120,7 @@ earnings-limit:
 | `threshold-warnings.enabled` | `false` | Warn players as they get close to a cap |
 | `threshold-warnings.percentages` | `[50, 75, 90]` | Percentages of a cap that trigger a warning |
 | `threshold-warnings.sound` | `BLOCK_NOTE_BLOCK_BELL` | Sound played with a warning (see Threshold warnings below) |
+| `auto-tune.multiplier` | `3.0` | `/cf limit auto-tune` suggests caps of this many times a typical day's wins or losses (see Auto-tune below) |
 
 ### Per-currency settings
 
@@ -139,15 +140,15 @@ Use these IDs under `per-currency`, in placeholders and with `/cf limit auto-tun
 
 | Currency | ID |
 |---|---|
-| Vault | `vault` |
+| Vault | `vault` (`money` also works) |
 | PlayerPoints | `playerpoints` |
 | TokenManager | `tokenmanager` |
 | BeastTokens | `beasttokens` |
 | CoinsEngine / ExcellentEconomy | The currency ID from `coinsengine.yml`, e.g. `coins` |
 | Custom PlaceholderAPI currency | The currency ID from `customplaceholder.yml`, e.g. `orbs` |
 
-::: warning Vault is `vault`, not `money`
-Betting Limits call Vault `money`, but Earnings & Loss Limits only match `vault`. A `money` block under `per-currency` never blocks anyone.
+::: warning Vault's block is `vault`
+Betting Limits call Vault `money`, so a `money` block under `per-currency` works for Vault too: any limit type you enable there applies to Vault unless the same type is enabled in the `vault` block.
 :::
 
 ### Permission group caps
@@ -177,9 +178,7 @@ You are at 75% of your max-loss limit (375000 / 500000). Use /cf limit me to che
 - An empty `percentages` list uses 50, 75 and 90.
 - Add `100` to the list to also warn the moment a cap is reached.
 
-::: warning Warning sound
-`sound` takes the name of an entry in `sounds.yml`, such as `game.start`, and plays it with that entry's volume and pitch. The default `BLOCK_NOTE_BLOCK_BELL` is a Minecraft sound name rather than a `sounds.yml` entry, so it plays nothing. Leave `sound` empty for no sound.
-:::
+`sound` takes an entry from `sounds.yml`, such as `game.start`, played with that entry's volume and pitch, or a Minecraft sound name such as `BLOCK_NOTE_BLOCK_BELL`. Leave `sound` empty for no sound.
 
 ## Auto-tune
 
@@ -187,7 +186,7 @@ Not sure which caps to pick? `/cf limit auto-tune <currency>` suggests `max-win`
 
 1. It reads the last 30 days of results for that currency.
 2. For each player on each day they played, it adds up how much they won and how much they lost.
-3. It takes the median of those daily totals and multiplies it by 3.
+3. It takes the median of those daily totals and multiplies it by `auto-tune.multiplier` (3 by default).
 
 ```
 Suggested caps for vault (multiplier=3.0, 42 buckets):
@@ -272,6 +271,6 @@ All texts are in `messages_<lang>.yml` under `command:`. Their keys start with `
 | Bypass permission | `ultracoinflip.bypass.bettinglimit` | None |
 | Usage kept after a restart | No | Yes |
 | Config section | `betting-limits` | `earnings-limit` |
-| Vault ID | `money` | `vault` |
+| Vault ID | `money` | `vault` (`money` also works) |
 
 In short, Betting Limits control how much players put in, while Earnings & Loss Limits control how far ahead or behind they can end up.

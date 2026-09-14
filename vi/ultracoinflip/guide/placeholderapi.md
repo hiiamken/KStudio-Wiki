@@ -137,6 +137,7 @@ Thêm từ khóa mốc thời gian ngay sau filter để xếp hạng theo **ng�
 
 - Tuần bắt đầu từ **thứ Hai**, tháng/năm từ ngày 1, theo giờ máy chủ.
 - Bảng theo mốc chỉ tính ván **người đấu người** (không tính ván với bot).
+- Bảng `profit` theo mốc tính một ván thắng giống bảng toàn thời gian: với money, PlayerPoints, TokenManager và BeastTokens chỉ tính phần thắng thêm ngoài tiền cược, với tiền CoinsEngine và tiền tùy chỉnh thì tính toàn bộ số tiền được trả.
 - `winstreak` không có mốc thời gian — luôn là chuỗi thắng hiện tại.
 - Có thể dùng từ khóa `alltime` hoặc `total` để chỉ rõ bảng toàn thời gian.
 
@@ -202,7 +203,7 @@ Hiển thị tiến độ của người chơi so với [giới hạn thắng & 
 | `netprofitlimit` | `max-net-profit` |
 | `volumelimit` | `max-volume` |
 
-- `<currency>` là key của loại tiền trong `earnings-limit.per-currency`: `vault` cho tiền Vault (không phải `money`), `playerpoints`, `tokenmanager`, `beasttokens`, hoặc ID tiền tệ CoinsEngine / tùy chỉnh.
+- `<currency>` là key của loại tiền trong `earnings-limit.per-currency`: `vault` cho tiền Vault (`money` cũng dùng được), `playerpoints`, `tokenmanager`, `beasttokens`, hoặc ID tiền tệ CoinsEngine / tùy chỉnh.
 - Số tiền hiện dạng số thường: số tròn không có phần thập phân, số lẻ hiện hai chữ số thập phân (vd `2500.50`).
 - Placeholder để trống khi `earnings-limit.enabled` là `false` hoặc giới hạn đó chưa bật cho loại tiền.
 - Với chu kỳ `rolling-24h` hoặc `rolling-7d` không có thời điểm reset cố định, nên `_reset` luôn hiện `0`.
@@ -241,7 +242,7 @@ Cho **Custom PlaceholderAPI**:
 | `%coinflip_win_percentage_<id>%` | Tỷ lệ thắng (tên khác) |
 | `%coinflip_win_percentage_<id>_formatted%` | Tỷ lệ thắng có ký hiệu `%` (tên khác) |
 
-Dạng dài `%coinflip_winrate_placeholder_<id>%` (và bản `_formatted`) cũng dùng được.
+Dạng dài `%coinflip_winrate_placeholder_<id>%` và `%coinflip_placeholder_<id>_winrate%` (cùng bản `_formatted` của chúng) cũng dùng được.
 
 Cả hai loại tiền này cũng dùng được trong placeholder [bảng xếp hạng](#bang-xep-hang), [xếp hạng người chơi](#xep-hang-nguoi-choi) và [giới hạn thắng/thua](#gioi-han-thang-thua).
 

@@ -1,6 +1,6 @@
 # Commands
 
-All commands use `/coinflip` or the alias `/cf`.
+All commands use `/coinflip` or the alias `/cf`. To add more names, list them under `command_aliases` in `config.yml` and restart the server. Names can only contain letters, digits and underscores.
 
 ## Player Commands
 
@@ -36,7 +36,7 @@ All commands use `/coinflip` or the alias `/cf`.
 | `/cf webhook test` | Send a test message to your Discord webhook |
 | `/cf limit player <player>` | View another player's earnings and loss limits |
 | `/cf limit reset <player>` | Reset a player's earnings limits for the current period |
-| `/cf limit auto-tune <currency>` | Suggest max-win and max-loss caps from the last 30 days of games (`<currency>` is the key under `earnings-limit.per-currency`, e.g. `vault`) |
+| `/cf limit auto-tune <currency>` | Suggest max-win and max-loss caps from the last 30 days of games (`<currency>` is the key under `earnings-limit.per-currency`, e.g. `vault`; `money` also works for Vault) |
 
 ::: warning
 Reloading while a flip is still animating ends that flip and gives the bets back (offline players get theirs on their next join). `/coinflip reload` is refused while refunds are still being processed.
@@ -97,4 +97,4 @@ Each currency has a **syntax command** used in the create command. These are con
 | ExcellentEconomy / CoinsEngine | `coin` | `/cf create coin 1000` |
 | Custom (PlaceholderAPI) | *(configurable)* | `/cf create orb 500` |
 
-A keyword only works while its currency is enabled — only Vault is enabled by default. ExcellentEconomy and custom currencies can also be picked with `coinsengine:<id>` / `placeholder:<id>`, or just the currency ID.
+A keyword only works while its currency is enabled — only Vault is enabled by default. ExcellentEconomy and custom currencies can also be picked with `coinsengine:<id>` / `placeholder:<id>`, or just the currency ID. Vault, PlayerPoints, TokenManager and BeastTokens also accept `money`, `playerpoints`, `tokenmanager` and `beasttokens`, unless a keyword or currency ID already uses that name.

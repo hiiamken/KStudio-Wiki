@@ -99,7 +99,7 @@ Placeholder nên trả về một số thuần, nhưng UltraCoinFlip vẫn xử 
 - Mã màu, dấu cách và dấu phẩy được bỏ qua, nên `1,234,567.89` được đọc là `1234567.89`.
 - Dấu phẩy luôn được coi là dấu phân cách hàng nghìn — `28,5` được đọc là `285`. Phần thập phân phải dùng dấu chấm.
 - Số lớn dạng `1.2345678E7` được đọc đúng.
-- Các ký tự khác bị loại bỏ, nên `$1500` vẫn đọc được — nhưng số viết tắt thì không: `1.5k` được đọc là `1.5`. Hãy dùng placeholder trả về số đầy đủ.
+- Các ký tự khác bị loại bỏ, nên `$1500` vẫn đọc được. Giá trị chỉ gồm một số viết tắt như `1.5k`, `$2M` hay `3.2B Gems` được đọc đầy đủ (`1.5k` → `1500`). Giá trị không rõ ràng như `Balance: 1.5k`, `1,5k` hay `5Mobcoins` chỉ được đọc phần số, để người chơi không bao giờ bị tính giàu hơn thực tế.
 - Nếu không có số nào, console sẽ cảnh báo và số dư được tính là `0`. Số dư âm cũng được tính là `0`.
 
 ## Khi lệnh bị lỗi

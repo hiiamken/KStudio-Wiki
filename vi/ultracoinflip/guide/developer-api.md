@@ -365,10 +365,8 @@ Kích hoạt mỗi lần một người chơi đã chạm [giới hạn thắng 
 | `getPeriod()` | `LimitPeriod` hiện tại |
 | `getCap()` | Hạn mức của người chơi |
 | `getUsed()` | Số đã tính trong chu kỳ này |
-| `getResetAtEpochMillis()` | Luôn là `0` khi UltraCoinFlip kích hoạt event này |
+| `getResetAtEpochMillis()` | Thời điểm kết thúc chu kỳ hiện tại, tính bằng mili giây epoch. Với chu kỳ trượt, đây là thời điểm hiện tại |
 | `getInfo()` | Cùng dữ liệu đó dưới dạng `EarningsLimitInfo` |
-
-Để lấy thời điểm kết thúc chu kỳ hiện tại, hãy gọi `getEarningsLimit(...)` với cùng người chơi, loại tiền và loại giới hạn.
 
 ```java
 @EventHandler

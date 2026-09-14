@@ -25,6 +25,7 @@ game-behavior:
 - Only waiting coinflips expire. A flip that is already rolling is never touched.
 - If the host is online, the bet is returned right away with the `game.expired` message ("Your coinflip expired because nobody joined").
 - If the host is offline, or the deposit fails, the bet is returned on their next join.
+- The currency's `on-cancelled` [event commands](/ultracoinflip/config/currencies) run when a coinflip expires while its host is online. They don't run for an offline host.
 
 ::: tip
 `enabled` and `after-hours` take effect after `/cf reload`. A new `check-interval-minutes` needs a server restart.

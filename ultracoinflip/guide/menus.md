@@ -85,7 +85,7 @@ filler:
   material: 'hdb-1234'
 ```
 
-This works on filler and extra filler items, the create menu's + and − preset buttons, and the settings on/off icons (`settings-gui.toggle`). On other buttons an `hdb-` material shows a plain player head. A plain head is also shown when HeadDatabase isn't installed, is still loading, or doesn't know the ID.
+This works on every item in the menu files, including the flip animation. Skin settings such as `player-head` are ignored for `hdb-` materials. The winner, loser and bot heads shown as a flip's result keep their normal skins. A plain head is shown when HeadDatabase isn't installed, is still loading, or doesn't know the ID.
 
 ### Player heads
 

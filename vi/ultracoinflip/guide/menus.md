@@ -85,7 +85,7 @@ filler:
   material: 'hdb-1234'
 ```
 
-Cách này dùng được cho filler và filler phụ, các nút cộng/trừ có sẵn trong menu tạo ván, và icon bật/tắt trong menu cài đặt (`settings-gui.toggle`). Ở các nút khác, material `hdb-` chỉ hiện đầu người chơi trơn. Đầu trơn cũng hiện ra khi chưa cài HeadDatabase, HeadDatabase đang tải, hoặc ID không tồn tại.
+Cách này dùng được cho mọi vật phẩm trong các file menu, kể cả hiệu ứng tung đồng xu. Với material `hdb-`, các thiết lập skin như `player-head` sẽ bị bỏ qua. Đầu người thắng, người thua và đầu bot hiện ở kết quả ván tung vẫn giữ skin như bình thường. Đầu trơn hiện ra khi chưa cài HeadDatabase, HeadDatabase đang tải, hoặc ID không tồn tại.
 
 ### Đầu người chơi
 

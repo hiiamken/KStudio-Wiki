@@ -137,6 +137,7 @@ Add a period keyword right after the filter to rank by **daily**, **weekly**, **
 
 - Weeks start on **Monday**, months/years on the 1st, in the server's local time.
 - Timed boards count **player-vs-player** games only (bot games are excluded).
+- Timed `profit` boards count a win the same way as the all-time board: only what the player won on top of their bet for money, PlayerPoints, TokenManager and BeastTokens, and the full payout for CoinsEngine and custom currencies.
 - `winstreak` has no period — it is always the current streak.
 - `alltime` or `total` can be used as the keyword to ask for the all-time board explicitly.
 
@@ -202,7 +203,7 @@ Swap `winlimit` for another limit type. The suffixes work the same way:
 | `netprofitlimit` | `max-net-profit` |
 | `volumelimit` | `max-volume` |
 
-- `<currency>` is the currency's key under `earnings-limit.per-currency`: `vault` for Vault money (not `money`), `playerpoints`, `tokenmanager`, `beasttokens`, or a CoinsEngine / custom currency ID.
+- `<currency>` is the currency's key under `earnings-limit.per-currency`: `vault` for Vault money (`money` works too), `playerpoints`, `tokenmanager`, `beasttokens`, or a CoinsEngine / custom currency ID.
 - Amounts are plain numbers: whole amounts have no decimals, anything else shows two (e.g. `2500.50`).
 - The placeholders are blank when `earnings-limit.enabled` is `false` or that limit isn't enabled for the currency.
 - With a `rolling-24h` or `rolling-7d` period there is no fixed reset time, so `_reset` always shows `0`.
@@ -241,7 +242,7 @@ For **Custom PlaceholderAPI** currencies:
 | `%coinflip_win_percentage_<id>%` | Win percentage (alias) |
 | `%coinflip_win_percentage_<id>_formatted%` | Win percentage with `%` symbol (alias) |
 
-The long form `%coinflip_winrate_placeholder_<id>%` (and its `_formatted` version) works too.
+The long forms `%coinflip_winrate_placeholder_<id>%` and `%coinflip_placeholder_<id>_winrate%` (and their `_formatted` versions) work too.
 
 Both currency types can also be used in the [leaderboard](#leaderboard), [player ranking](#player-ranking) and [earnings limit](#earnings-limits) placeholders.
 

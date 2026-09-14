@@ -25,6 +25,7 @@ game-behavior:
 - Chỉ coinflip đang chờ mới hết hạn. Ván đang quay không bao giờ bị động tới.
 - Nếu chủ phòng đang online, tiền cược được trả ngay kèm tin nhắn `game.expired` ("Coinflip của bạn đã hết hạn vì không có ai tham gia").
 - Nếu chủ phòng offline, hoặc cộng tiền thất bại, tiền cược được trả khi họ vào lại.
+- [Lệnh sự kiện](/vi/ultracoinflip/config/currencies) `on-cancelled` của loại tiền sẽ chạy khi coinflip hết hạn trong lúc chủ phòng đang online. Lệnh này không chạy nếu chủ phòng offline.
 
 ::: tip
 `enabled` và `after-hours` có hiệu lực sau `/cf reload`. Đổi `check-interval-minutes` cần restart server.

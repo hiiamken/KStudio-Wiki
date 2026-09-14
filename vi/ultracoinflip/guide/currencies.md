@@ -44,7 +44,7 @@ Mỗi loại tiền có một từ khóa `syntax-command` để người chơi g
 | `/cf create <amount>` | Dùng `default-currency` trong `config.yml` (`auto` chọn loại tiền đầu tiên đang bật, bắt đầu từ Vault) |
 | `/cf create <keyword> <amount> bot` | Chơi với bot (chữ `bot` đổi được trong `config.yml`) |
 
-Số tiền có thể viết kèm `k`, `M`, `B` và `T`, ví dụ `/cf create money 2.5M`. Với tiền tệ ExcellentEconomy và tiền tệ tùy chỉnh, người chơi cũng có thể gõ ID tiền tệ thay cho từ khóa.
+Số tiền có thể viết kèm `k`, `M`, `B` và `T`, ví dụ `/cf create money 2.5M`. Với tiền tệ ExcellentEconomy và tiền tệ tùy chỉnh, người chơi cũng có thể gõ ID tiền tệ thay cho từ khóa. Vault, PlayerPoints, TokenManager và BeastTokens cũng chọn được bằng `money`, `playerpoints`, `tokenmanager` và `beasttokens`.
 
 ## Cấu hình từng loại tiền
 

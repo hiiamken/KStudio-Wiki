@@ -44,7 +44,7 @@ Every currency has a `syntax-command` keyword that players type after `/cf creat
 | `/cf create <amount>` | Uses `default-currency` from `config.yml` (`auto` picks the first enabled currency, starting with Vault) |
 | `/cf create <keyword> <amount> bot` | Plays against the bot (the word `bot` can be changed in `config.yml`) |
 
-Amounts can use `k`, `M`, `B` and `T`, e.g. `/cf create money 2.5M`. For ExcellentEconomy and custom currencies, players can also type the currency ID instead of the keyword.
+Amounts can use `k`, `M`, `B` and `T`, e.g. `/cf create money 2.5M`. For ExcellentEconomy and custom currencies, players can also type the currency ID instead of the keyword. Vault, PlayerPoints, TokenManager and BeastTokens can also be picked with `money`, `playerpoints`, `tokenmanager` and `beasttokens`.
 
 ## Per-currency settings
 

@@ -99,7 +99,7 @@ The placeholder should return a plain number, but UltraCoinFlip cleans up common
 - Color codes, spaces and commas are ignored, so `1,234,567.89` is read as `1234567.89`.
 - Commas always count as thousands separators — `28,5` is read as `285`. Decimals must use a dot.
 - Large numbers written like `1.2345678E7` are read correctly.
-- Other characters are stripped, so `$1500` works — but shortened numbers don't: `1.5k` is read as `1.5`. Use a placeholder that returns the full number.
+- Other characters are stripped, so `$1500` works. A value that is only a shortened number, like `1.5k`, `$2M` or `3.2B Gems`, is read in full (`1.5k` → `1500`). Less clear values such as `Balance: 1.5k`, `1,5k` or `5Mobcoins` are read as the plain number, so a player never looks richer than they are.
 - If there is no number at all, the console shows a warning and the balance counts as `0`. Negative balances also count as `0`.
 
 ## When a Command Fails

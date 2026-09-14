@@ -1,6 +1,6 @@
 # Lệnh
 
-Tất cả lệnh dùng `/coinflip` hoặc alias `/cf`.
+Tất cả lệnh dùng `/coinflip` hoặc alias `/cf`. Muốn thêm tên lệnh khác, hãy liệt kê chúng trong `command_aliases` của `config.yml` rồi khởi động lại server. Tên chỉ được chứa chữ cái, chữ số và dấu gạch dưới.
 
 ## Lệnh người chơi
 
@@ -36,7 +36,7 @@ Tất cả lệnh dùng `/coinflip` hoặc alias `/cf`.
 | `/cf webhook test` | Gửi tin nhắn thử đến Discord webhook |
 | `/cf limit player <player>` | Xem giới hạn thắng/thua của người chơi khác |
 | `/cf limit reset <player>` | Đặt lại giới hạn thắng/thua của người chơi trong kỳ hiện tại |
-| `/cf limit auto-tune <currency>` | Gợi ý mức max-win và max-loss dựa trên các trận trong 30 ngày qua (`<currency>` là key trong `earnings-limit.per-currency`, ví dụ `vault`) |
+| `/cf limit auto-tune <currency>` | Gợi ý mức max-win và max-loss dựa trên các trận trong 30 ngày qua (`<currency>` là key trong `earnings-limit.per-currency`, ví dụ `vault`; với Vault dùng `money` cũng được) |
 
 ::: warning
 Reload khi một trận vẫn đang chạy animation sẽ kết thúc trận đó và trả lại tiền cược (người chơi offline sẽ nhận lại khi vào server lần tới). `/coinflip reload` sẽ bị từ chối khi việc hoàn tiền vẫn đang được xử lý.
@@ -97,4 +97,4 @@ Mỗi loại tiền có **từ khóa** riêng dùng trong lệnh tạo game. C�
 | ExcellentEconomy / CoinsEngine | `coin` | `/cf create coin 1000` |
 | Custom (PlaceholderAPI) | *(tùy chỉnh)* | `/cf create orb 500` |
 
-Từ khóa chỉ hoạt động khi loại tiền đó đang bật — mặc định chỉ có Vault được bật. Tiền ExcellentEconomy và tiền tệ tùy chỉnh cũng có thể chọn bằng `coinsengine:<id>` / `placeholder:<id>`, hoặc chỉ cần ghi ID của loại tiền.
+Từ khóa chỉ hoạt động khi loại tiền đó đang bật — mặc định chỉ có Vault được bật. Tiền ExcellentEconomy và tiền tệ tùy chỉnh cũng có thể chọn bằng `coinsengine:<id>` / `placeholder:<id>`, hoặc chỉ cần ghi ID của loại tiền. Vault, PlayerPoints, TokenManager và BeastTokens cũng nhận `money`, `playerpoints`, `tokenmanager` và `beasttokens`, trừ khi một từ khóa hay ID tiền tệ đã dùng tên đó.

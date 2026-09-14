@@ -97,8 +97,8 @@ event-commands:
 | `round-to-integer` | Bets are rounded down to a whole number and winnings are rounded to the nearest whole number after tax. PlayerPoints and TokenManager always do this, whatever this setting says. |
 | `tax-enabled` / `tax-rate` / `dynamic-tax-enabled` / `tax-rate-config` | See [Tax System](/ultracoinflip/guide/tax). |
 
-::: warning Use plain numbers
-Write amounts as plain numbers without quotes (`10000`, not `10k` or `'10000'`). Anything else is ignored and the default is used instead — for `max-bid` that means no limit.
+::: warning Writing amounts
+`min-broadcast-amount`, `min-bid`, `max-bid`, `min-reserve-balance` and the tax tier `min-amount` / `max-amount` take plain numbers or shorthand such as `10k` or `1.5M`. A value that can't be read, such as `10,000`, is ignored and the default is used instead — for `max-bid` that means no limit.
 :::
 
 ## ExcellentEconomy / CoinsEngine (`coinsengine.yml`)
@@ -188,7 +188,7 @@ Run console commands automatically when game events occur.
 | `on-start` | The flip animation starts — once for each player |
 | `on-win` | A player wins (`%player%` is the winner) |
 | `on-lose` | A player loses (`%player%` is the loser) |
-| `on-cancelled` | A player cancels a waiting game and gets the bet back (expired games don't trigger it) |
+| `on-cancelled` | A player cancels a waiting game and gets the bet back, or a waiting game expires while its host is online |
 
 `on-start`, `on-win` and `on-lose` also run for games against the bot. Available placeholders:
 

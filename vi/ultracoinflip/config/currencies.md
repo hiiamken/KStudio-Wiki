@@ -97,8 +97,8 @@ event-commands:
 | `round-to-integer` | Mức cược được làm tròn xuống số nguyên, tiền thắng sau thuế được làm tròn về số nguyên gần nhất. PlayerPoints và TokenManager luôn làm vậy, bất kể thiết lập này. |
 | `tax-enabled` / `tax-rate` / `dynamic-tax-enabled` / `tax-rate-config` | Xem [Hệ thống thuế](/vi/ultracoinflip/guide/tax). |
 
-::: warning Dùng số thường
-Viết số tiền dưới dạng số thường, không đặt trong dấu nháy (`10000`, không phải `10k` hay `'10000'`). Giá trị khác sẽ bị bỏ qua và dùng giá trị mặc định — với `max-bid` nghĩa là không giới hạn.
+::: warning Cách viết số tiền
+`min-broadcast-amount`, `min-bid`, `max-bid`, `min-reserve-balance` và `min-amount` / `max-amount` của các bậc thuế nhận số thường hoặc số viết tắt như `10k` hay `1.5M`. Giá trị không đọc được, ví dụ `10,000`, sẽ bị bỏ qua và dùng giá trị mặc định — với `max-bid` nghĩa là không giới hạn.
 :::
 
 ## ExcellentEconomy / CoinsEngine (`coinsengine.yml`)
@@ -188,7 +188,7 @@ Chạy lệnh console tự động khi các sự kiện game xảy ra.
 | `on-start` | Hoạt ảnh tung xu bắt đầu — chạy riêng cho từng người chơi |
 | `on-win` | Người chơi thắng (`%player%` là người thắng) |
 | `on-lose` | Người chơi thua (`%player%` là người thua) |
-| `on-cancelled` | Người chơi hủy game đang chờ và được hoàn tiền cược (game hết hạn không kích hoạt sự kiện này) |
+| `on-cancelled` | Người chơi hủy game đang chờ và được hoàn tiền cược, hoặc game đang chờ hết hạn khi chủ phòng đang online |
 
 `on-start`, `on-win` và `on-lose` cũng chạy trong game với bot. Placeholder có sẵn:
 

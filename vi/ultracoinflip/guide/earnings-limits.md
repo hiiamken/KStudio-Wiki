@@ -120,6 +120,7 @@ earnings-limit:
 | `threshold-warnings.enabled` | `false` | Cảnh báo người chơi khi sắp chạm hạn mức |
 | `threshold-warnings.percentages` | `[50, 75, 90]` | Các mốc phần trăm của hạn mức sẽ kích hoạt cảnh báo |
 | `threshold-warnings.sound` | `BLOCK_NOTE_BLOCK_BELL` | Âm thanh phát kèm cảnh báo (xem mục Cảnh báo khi sắp chạm hạn mức bên dưới) |
+| `auto-tune.multiplier` | `3.0` | `/cf limit auto-tune` gợi ý hạn mức bằng mức thắng hoặc thua của một ngày điển hình nhân với số này (xem mục Tự động gợi ý hạn mức bên dưới) |
 
 ### Cài đặt theo loại tiền
 
@@ -139,15 +140,15 @@ Dùng các ID này trong `per-currency`, trong placeholder và với `/cf limit 
 
 | Loại tiền | ID |
 |---|---|
-| Vault | `vault` |
+| Vault | `vault` (`money` cũng dùng được) |
 | PlayerPoints | `playerpoints` |
 | TokenManager | `tokenmanager` |
 | BeastTokens | `beasttokens` |
 | CoinsEngine / ExcellentEconomy | ID loại tiền trong `coinsengine.yml`, ví dụ `coins` |
 | Loại tiền Custom PlaceholderAPI | ID loại tiền trong `customplaceholder.yml`, ví dụ `orbs` |
 
-::: warning Vault là `vault`, không phải `money`
-Giới hạn cược gọi Vault là `money`, nhưng Giới hạn thắng thua chỉ nhận `vault`. Khối `money` trong `per-currency` sẽ không chặn ai cả.
+::: warning Khối của Vault là `vault`
+Giới hạn cược gọi Vault là `money`, nên khối `money` trong `per-currency` cũng dùng được cho Vault: loại giới hạn nào bạn bật ở đó sẽ áp dụng cho Vault, trừ khi loại đó đã được bật trong khối `vault`.
 :::
 
 ### Hạn mức theo nhóm quyền
@@ -177,9 +178,7 @@ Bạn đang ở 75% giới hạn max-loss (375000 / 500000). Dùng /cf limit me 
 - Danh sách `percentages` để trống sẽ dùng 50, 75 và 90.
 - Thêm `100` vào danh sách để cảnh báo ngay lúc chạm hạn mức.
 
-::: warning Âm thanh cảnh báo
-`sound` nhận tên một mục trong `sounds.yml`, ví dụ `game.start`, và phát với âm lượng, cao độ của mục đó. Giá trị mặc định `BLOCK_NOTE_BLOCK_BELL` là tên âm thanh Minecraft chứ không phải một mục trong `sounds.yml`, nên sẽ không phát gì. Để trống `sound` nếu không muốn có âm thanh.
-:::
+`sound` nhận tên một mục trong `sounds.yml`, ví dụ `game.start`, phát với âm lượng và cao độ của mục đó, hoặc tên âm thanh Minecraft như `BLOCK_NOTE_BLOCK_BELL`. Để trống `sound` nếu không muốn có âm thanh.
 
 ## Tự động gợi ý hạn mức (auto-tune)
 
@@ -187,7 +186,7 @@ Chưa biết nên đặt hạn mức bao nhiêu? `/cf limit auto-tune <currency>
 
 1. Đọc kết quả 30 ngày gần nhất của loại tiền đó.
 2. Với mỗi người chơi, trong mỗi ngày họ có chơi, cộng tổng tiền thắng và tổng tiền thua.
-3. Lấy trung vị của các tổng theo ngày đó rồi nhân 3.
+3. Lấy trung vị của các tổng theo ngày đó rồi nhân với `auto-tune.multiplier` (mặc định là 3).
 
 ```
 Gợi ý cap cho vault (multiplier=3.0, 42 buckets):
@@ -272,6 +271,6 @@ Toàn bộ nội dung tin nhắn nằm trong `messages_<lang>.yml`, mục `comma
 | Quyền bỏ qua | `ultracoinflip.bypass.bettinglimit` | Không có |
 | Giữ mức đã dùng sau khi khởi động lại | Không | Có |
 | Mục cấu hình | `betting-limits` | `earnings-limit` |
-| ID của Vault | `money` | `vault` |
+| ID của Vault | `money` | `vault` (`money` cũng dùng được) |
 
 Nói ngắn gọn, Giới hạn cược kiểm soát người chơi bỏ vào bao nhiêu, còn Giới hạn thắng thua kiểm soát họ có thể lời hoặc lỗ tối đa bao nhiêu.

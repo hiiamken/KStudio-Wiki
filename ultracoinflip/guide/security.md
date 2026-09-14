@@ -40,7 +40,7 @@ exploit-detection:
 | Event | Severity |
 |---|---|
 | A withdraw reported success but the balance didn't go down | High |
-| A player left or closed the menu after the flip's result was decided | High |
+| A player left after the flip's result was decided | High |
 | A deposit reported success but the balance didn't go up | Medium |
 | Two players tried to join the same game at once | Medium |
 | A join was rolled back because the withdraw failed | Medium |

@@ -40,7 +40,7 @@ exploit-detection:
 | Sự kiện | Mức độ |
 |---|---|
 | Trừ tiền báo thành công nhưng số dư không giảm | Cao |
-| Người chơi thoát hoặc đóng menu sau khi kết quả ván đã được quyết định | Cao |
+| Người chơi thoát sau khi kết quả ván đã được quyết định | Cao |
 | Cộng tiền báo thành công nhưng số dư không tăng | Trung bình |
 | Hai người chơi cùng lúc tham gia một game | Trung bình |
 | Lượt tham gia bị hoàn tác vì trừ tiền thất bại | Trung bình |
