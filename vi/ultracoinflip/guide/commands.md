@@ -33,6 +33,7 @@ Tất cả lệnh dùng `/coinflip` hoặc alias `/cf`. Muốn thêm tên lệnh
 |---|---|
 | `/coinflip reload` | Reload tất cả file cấu hình |
 | `/cf audit` | Mở bảng điều khiển admin theo thời gian thực |
+| `/cf support` | Tạo báo cáo chẩn đoán và in ra link để gửi cho bộ phận hỗ trợ |
 | `/cf webhook test` | Gửi tin nhắn thử đến Discord webhook |
 | `/cf limit player <player>` | Xem giới hạn thắng/thua của người chơi khác |
 | `/cf limit reset <player>` | Đặt lại giới hạn thắng/thua của người chơi trong kỳ hiện tại |
@@ -44,7 +45,7 @@ Reload khi một trận vẫn đang chạy animation sẽ kết thúc trận đ�
 
 ## Console
 
-Các lệnh sau cũng chạy được từ console của server: `coinflip help`, `coinflip info`, `coinflip reload`, `cf audit` (in báo cáo hệ thống dạng chữ thay vì mở bảng điều khiển), `cf webhook test`, `cf limit`, `cf limit reset <player>` và `cf limit auto-tune <currency>`. Các lệnh còn lại phải do người chơi chạy trong game.
+Các lệnh sau cũng chạy được từ console của server: `coinflip help`, `coinflip info`, `coinflip reload`, `cf audit` (in báo cáo hệ thống dạng chữ thay vì mở bảng điều khiển), `cf support`, `cf webhook test`, `cf limit`, `cf limit reset <player>` và `cf limit auto-tune <currency>`. Các lệnh còn lại phải do người chơi chạy trong game.
 
 ## Alias của subcommand
 

@@ -33,6 +33,7 @@ All commands use `/coinflip` or the alias `/cf`. To add more names, list them un
 |---|---|
 | `/coinflip reload` | Reload all configuration files |
 | `/cf audit` | Open the real-time admin monitoring dashboard |
+| `/cf support` | Upload a diagnostics report and print a link to send to support |
 | `/cf webhook test` | Send a test message to your Discord webhook |
 | `/cf limit player <player>` | View another player's earnings and loss limits |
 | `/cf limit reset <player>` | Reset a player's earnings limits for the current period |
@@ -44,7 +45,7 @@ Reloading while a flip is still animating ends that flip and gives the bets back
 
 ## Console
 
-These commands also work from the server console: `coinflip help`, `coinflip info`, `coinflip reload`, `cf audit` (prints a text system report instead of the dashboard), `cf webhook test`, `cf limit`, `cf limit reset <player>` and `cf limit auto-tune <currency>`. Every other command has to be run in-game by a player.
+These commands also work from the server console: `coinflip help`, `coinflip info`, `coinflip reload`, `cf audit` (prints a text system report instead of the dashboard), `cf support`, `cf webhook test`, `cf limit`, `cf limit reset <player>` and `cf limit auto-tune <currency>`. Every other command has to be run in-game by a player.
 
 ## Subcommand Aliases
 

@@ -6,7 +6,7 @@
 |---|---|---|
 | `ultracoinflip.use` | Required for every `/cf` command, on top of the command's own node | `true` |
 | `ultracoinflip.reload` | Reload plugin configuration | `op` |
-| `ultracoinflip.admin` | Admin commands (`/cf audit`, `/cf webhook test`), the admin part of `/cf help`, update and security alerts. Also includes `ultracoinflip.reload` | `op` |
+| `ultracoinflip.admin` | Admin commands (`/cf audit`, `/cf support`, `/cf webhook test`), the admin part of `/cf help`, update and security alerts. Also includes `ultracoinflip.reload` | `op` |
 | `ultracoinflip.silent` | Disable global game announcements for this player | `false` |
 
 ## Per-Subcommand Permissions

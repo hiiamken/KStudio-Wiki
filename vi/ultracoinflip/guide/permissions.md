@@ -6,7 +6,7 @@
 |---|---|---|
 | `ultracoinflip.use` | Bắt buộc cho mọi lệnh `/cf`, được kiểm tra cùng với node quyền riêng của lệnh | `true` |
 | `ultracoinflip.reload` | Reload cấu hình plugin | `op` |
-| `ultracoinflip.admin` | Lệnh admin (`/cf audit`, `/cf webhook test`), phần lệnh admin trong `/cf help`, thông báo cập nhật và cảnh báo bảo mật. Bao gồm cả `ultracoinflip.reload` | `op` |
+| `ultracoinflip.admin` | Lệnh admin (`/cf audit`, `/cf support`, `/cf webhook test`), phần lệnh admin trong `/cf help`, thông báo cập nhật và cảnh báo bảo mật. Bao gồm cả `ultracoinflip.reload` | `op` |
 | `ultracoinflip.silent` | Tắt thông báo game toàn server cho người chơi này | `false` |
 
 ## Quyền theo từng subcommand
