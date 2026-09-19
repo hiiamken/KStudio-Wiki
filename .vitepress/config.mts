@@ -223,7 +223,11 @@ export default defineConfig({
   ignoreDeadLinks: true,
 
   head: [
-    ['link', { rel: 'icon', href: '/KStudio-Wiki/favicon.ico' }],
+    ['link', { rel: 'icon', href: '/KStudio-Wiki/favicon.ico', sizes: 'any' }],
+    ['link', { rel: 'icon', type: 'image/png', href: '/KStudio-Wiki/assets/brand/kstudio-icon-256.png' }],
+    ['link', { rel: 'apple-touch-icon', href: '/KStudio-Wiki/assets/brand/apple-touch-icon.png' }],
+    ['meta', { name: 'theme-color', content: '#0a0806' }],
+    ['meta', { property: 'og:image', content: '/KStudio-Wiki/assets/brand/kstudio-avatar-512.png' }],
   ],
 
   locales: {
@@ -281,7 +285,11 @@ export default defineConfig({
   },
 
   themeConfig: {
-    logo: '/assets/kstudioavanew.png',
+    logo: {
+      light: '/assets/brand/kstudio-avatar-128.png',
+      dark: '/assets/brand/kstudio-avatar-128.png',
+      alt: 'KStudio',
+    },
     siteTitle: 'KStudio',
 
     socialLinks: [

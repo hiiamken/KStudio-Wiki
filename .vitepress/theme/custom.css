@@ -1,83 +1,137 @@
-/* ── KStudio Gold Theme ─────────────────────────────────── */
+/* ══════════════════════════════════════════════════════════
+   KStudio — site theme
 
-/* Light mode: gold + warm white */
+   Every colour below is lifted from the KStudio mark: the gold
+   slab (#e7a62b), its highlight (#fbdfa0), its shadow side
+   (#a8620a), and the deepslate field it sits on (#0a0806).
+   ══════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+/* ── Typography ─────────────────────────────────────────────
+   Be Vietnam Pro carries the Vietnamese diacritics this site
+   ships docs in. JetBrains Mono is the face these admins
+   already read their server logs and YAML in. */
+
 :root {
-  --vp-c-brand-1: #b8860b;
-  --vp-c-brand-2: #d4a017;
-  --vp-c-brand-3: #c9950a;
-  --vp-c-brand-soft: rgba(184, 134, 11, 0.12);
+  --vp-font-family-base: 'Be Vietnam Pro', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --vp-font-family-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+}
+
+/* ── Light: gold on warm paper ──────────────────────────── */
+
+:root {
+  /* #a8620a is the mark's own shadow slab and clears 4.5:1 on the
+     page background, so links stay readable without inventing a
+     colour that is not in the logo. */
+  --vp-c-brand-1: #a8620a;
+  --vp-c-brand-2: #c17f12;
+  --vp-c-brand-3: #e7a62b;
+  --vp-c-brand-soft: rgba(168, 98, 10, 0.1);
 
   --vp-c-tip-1: var(--vp-c-brand-1);
   --vp-c-tip-2: var(--vp-c-brand-2);
   --vp-c-tip-3: var(--vp-c-brand-3);
   --vp-c-tip-soft: var(--vp-c-brand-soft);
 
-  /* Sidebar active item */
-  --vp-c-default-1: var(--vp-c-brand-1);
-
-  /* Light backgrounds */
   --vp-c-bg: #fefcf8;
-  --vp-c-bg-soft: #faf6ee;
-  --vp-c-bg-alt: #f5f0e4;
+  --vp-c-bg-soft: #f8f4ec;
+  --vp-c-bg-alt: #f3ede1;
   --vp-c-bg-elv: #ffffff;
 
-  /* Text */
-  --vp-c-text-1: #2c2215;
-  --vp-c-text-2: #6b5d4a;
+  --vp-c-text-1: #241c12;
+  --vp-c-text-2: #6a5c49;
   --vp-c-text-3: #9a8c78;
 
-  /* Borders */
-  --vp-c-divider: rgba(184, 134, 11, 0.15);
+  --vp-c-divider: rgba(36, 28, 18, 0.11);
+  --vp-c-gutter: rgba(36, 28, 18, 0.08);
 
-  /* Button brand */
-  --vp-button-brand-bg: #c9950a;
-  --vp-button-brand-hover-bg: #b8860b;
-  --vp-button-brand-active-bg: #a67909;
-  --vp-button-brand-text: #ffffff;
+  --vp-button-brand-bg: #a8620a;
+  --vp-button-brand-hover-bg: #c17f12;
+  --vp-button-brand-active-bg: #8e5207;
+  --vp-button-brand-text: #fffaf0;
+  --vp-button-brand-border: transparent;
+
+  --vp-code-block-bg: #0a0806;
+  --vp-c-shadow-1: rgba(36, 28, 18, 0.07);
 }
 
-/* Dark mode: gold + deep black */
+/* ── Dark: gold on deepslate ────────────────────────────── */
+
 .dark {
-  --vp-c-brand-1: #e8a020;
-  --vp-c-brand-2: #f5c842;
-  --vp-c-brand-3: #d4940e;
-  --vp-c-brand-soft: rgba(232, 160, 32, 0.12);
+  --vp-c-brand-1: #e7a62b;
+  --vp-c-brand-2: #fbdfa0;
+  --vp-c-brand-3: #c98d18;
+  --vp-c-brand-soft: rgba(231, 166, 43, 0.13);
 
   --vp-c-tip-1: var(--vp-c-brand-1);
   --vp-c-tip-2: var(--vp-c-brand-2);
   --vp-c-tip-3: var(--vp-c-brand-3);
   --vp-c-tip-soft: var(--vp-c-brand-soft);
 
-  --vp-c-default-1: var(--vp-c-brand-1);
+  --vp-c-bg: #0a0806;
+  --vp-c-bg-soft: #14100b;
+  --vp-c-bg-alt: #100d09;
+  --vp-c-bg-elv: #18130d;
 
-  /* Dark backgrounds */
-  --vp-c-bg: #0d0b08;
-  --vp-c-bg-soft: #161210;
-  --vp-c-bg-alt: #1a1511;
-  --vp-c-bg-elv: #1e1914;
+  --vp-c-text-1: #eae4da;
+  --vp-c-text-2: #a2957f;
+  --vp-c-text-3: #7a6d5b;
 
-  /* Text */
-  --vp-c-text-1: #f5efe6;
-  --vp-c-text-2: #b5a48e;
-  --vp-c-text-3: #8a7a66;
+  --vp-c-divider: rgba(231, 166, 43, 0.13);
+  --vp-c-gutter: rgba(231, 166, 43, 0.09);
 
-  /* Borders */
-  --vp-c-divider: rgba(232, 160, 32, 0.12);
+  --vp-button-brand-bg: #e7a62b;
+  --vp-button-brand-hover-bg: #fbdfa0;
+  --vp-button-brand-active-bg: #c98d18;
+  --vp-button-brand-text: #2a1a04;
+  --vp-button-brand-border: transparent;
 
-  /* Button brand */
-  --vp-button-brand-bg: #d4940e;
-  --vp-button-brand-hover-bg: #e8a020;
-  --vp-button-brand-active-bg: #c9850a;
-  --vp-button-brand-text: #0d0b08;
+  --vp-code-block-bg: #050403;
+  --vp-c-shadow-1: rgba(0, 0, 0, 0.5);
 }
 
-/* ── Navbar styling ────────────────────────────────────── */
+/* ── Headings ───────────────────────────────────────────── */
 
-.VPNav {
-  border-bottom-color: var(--vp-c-divider) !important;
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3,
+.VPNavBarTitle .title {
+  letter-spacing: -0.02em;
 }
 
-/* ── Sidebar active link gold accent ───────────────────── */
+.vp-doc h1 { font-weight: 800; }
+.vp-doc h2 { font-weight: 700; }
+
+/* The rule under an h2 marks a new section; tint it so the page
+   structure reads in the brand rather than in default grey. */
+.vp-doc h2 {
+  border-top-color: var(--vp-c-divider);
+}
+
+/* ── Nav ────────────────────────────────────────────────── */
+
+.VPNav { border-bottom-color: var(--vp-c-divider) !important; }
+
+.VPNavBarTitle .logo {
+  border-radius: 7px;
+  height: 26px;
+  width: 26px;
+}
+
+.VPNavBarTitle .title {
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+/* ── Sidebar ────────────────────────────────────────────── */
+
+.VPSidebarItem.level-0 > .item > .text {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--vp-c-text-1);
+}
 
 .VPSidebarItem.is-active > .item > .indicator {
   background-color: var(--vp-c-brand-1) !important;
@@ -85,24 +139,137 @@
 
 .VPSidebarItem.is-active > .item > .link > .text {
   color: var(--vp-c-brand-1) !important;
+  font-weight: 600;
 }
 
-/* ── Code block tint ───────────────────────────────────── */
+/* ── Code ───────────────────────────────────────────────── */
+/* Code blocks stay dark in both themes — a config file looks the
+   same in an editor whichever way the docs are lit. */
 
-.dark .vp-code-group .tabs label.active {
+.vp-doc div[class*='language-'] {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+}
+
+.vp-doc [class*='language-'] code {
+  font-size: 0.82em;
+  line-height: 1.7;
+}
+
+/* Light mode keeps the dark code surface, so the tokens have to come from
+   Shiki's dark theme too — otherwise VitePress paints its light-theme
+   syntax colours onto near-black and the YAML is unreadable. */
+html:not(.dark) .vp-code span {
+  color: var(--shiki-dark, inherit);
+}
+
+.vp-doc [class*='language-'] > span.lang {
+  font-family: var(--vp-font-family-mono);
+  font-size: 0.7rem;
+  color: rgba(234, 228, 218, 0.35);
+}
+
+.vp-doc :not(pre) > code {
+  font-size: 0.85em;
+  border-radius: 3px;
+  color: var(--vp-c-brand-1);
+  background-color: var(--vp-c-brand-soft);
+}
+
+.vp-code-group .tabs label.active {
   color: var(--vp-c-brand-1);
 }
 
-.dark div[class*='language-'] > button.copy {
+.vp-code-group .tabs label.active::after {
+  background-color: var(--vp-c-brand-1);
+}
+
+div[class*='language-'] > button.copy {
+  border-color: rgba(234, 228, 218, 0.14);
+}
+
+/* ── Tables ─────────────────────────────────────────────── */
+/* These docs are mostly reference tables — config keys, permissions,
+   placeholders — so they get real attention. */
+
+.vp-doc table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.vp-doc th {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--vp-c-text-2);
+  background: var(--vp-c-bg-soft);
   border-color: var(--vp-c-divider);
 }
 
-/* ── Scrollbar gold tint (subtle) ──────────────────────── */
+.vp-doc td {
+  border-color: var(--vp-c-divider);
+}
+
+.vp-doc tr { background: transparent; }
+.vp-doc tr:nth-child(2n) { background: var(--vp-c-bg-soft); }
+
+.vp-doc td code {
+  white-space: nowrap;
+}
+
+/* ── Custom blocks ──────────────────────────────────────── */
+/* A flat left rule instead of a filled box: the note reads as an
+   aside to the text, not another card stacked on the page. */
+
+.vp-doc .custom-block {
+  border-width: 0 0 0 3px;
+  border-radius: 0 5px 5px 0;
+  padding: 14px 18px;
+  font-size: 0.92rem;
+}
+
+.vp-doc .custom-block-title {
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.01em;
+}
+
+.vp-doc .custom-block.tip { border-left-color: var(--vp-c-brand-1); }
+
+/* ── Search ─────────────────────────────────────────────── */
+
+.DocSearch-Button,
+.VPNavBarSearchButton {
+  border-radius: 6px;
+}
+
+/* ── Footer ─────────────────────────────────────────────── */
+
+.VPFooter {
+  border-top-color: var(--vp-c-divider) !important;
+  background: transparent !important;
+}
+
+.VPFooter .message,
+.VPFooter .copyright {
+  font-size: 0.82rem;
+}
+
+/* ── Scrollbar ──────────────────────────────────────────── */
+
+::-webkit-scrollbar { width: 11px; height: 11px; }
+::-webkit-scrollbar-track { background: transparent; }
 
 ::-webkit-scrollbar-thumb {
   background: var(--vp-c-brand-soft);
+  border-radius: 6px;
+  border: 3px solid var(--vp-c-bg);
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--vp-c-brand-3);
-}
+::-webkit-scrollbar-thumb:hover { background: var(--vp-c-brand-3); }
+
+/* ── Home page has its own full-bleed layout ────────────── */
+
+.Layout:has(.ks) .VPContent.is-home { padding-bottom: 0; }
